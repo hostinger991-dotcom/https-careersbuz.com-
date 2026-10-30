@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Neon Glow utilities */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(95, 222, 231, 0.35), inset 0 0 10px rgba(95, 222, 231, 0.15);
+}
+
+.glow-cyan-border {
+  border-color: #5fdee7;
+  box-shadow: 0 0 12px rgba(95, 222, 231, 0.45);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px rgba(255, 235, 59, 0.55);
+}
+
+/* Custom yellow hover card transformation */
+.card-yellow-hover {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-yellow-hover:hover {
+  background-color: #facc15 !important;
+  color: #090d10 !important;
+  border-color: #facc15 !important;
+  box-shadow: 0 14px 35px -5px rgba(250, 204, 21, 0.35), 0 0 20px rgba(250, 204, 21, 0.25);
+  transform: translateY(-4px);
+}
+
+.card-yellow-hover:hover .card-text-invert {
+  color: #0f171e !important;
+}
+
+.card-yellow-hover:hover .card-subtext-invert {
+  color: #1e293b !important;
+}
+
+.card-yellow-hover:hover .card-badge-invert {
+  background-color: #0f171e !important;
+  color: #facc15 !important;
+  border-color: #0f171e !important;
+}
+
+.card-yellow-hover:hover .card-accent-invert {
+  border-color: rgba(15, 23, 30, 0.25) !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5fdee7;
+}

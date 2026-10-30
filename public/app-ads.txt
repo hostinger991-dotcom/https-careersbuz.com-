@@ -1,0 +1,4 @@
+# CareersBuz Official App-Ads.txt Configuration
+# For mobile applications and programmatic ad exchanges
+# Domain: careersbuz.com
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

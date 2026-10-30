@@ -1,0 +1,6 @@
+{
+  "name": "CareersBuz",
+  "description": "CareersBuz - Engineering Careers, Published Daily. Independent journal of career management, job placement, resume engineering, and professional upskilling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

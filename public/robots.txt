@@ -1,0 +1,14 @@
+# CareersBuz Robots.txt
+# Strict SEO, Google Search Console, and AdSense Crawler Compliance
+User-agent: *
+Allow: /
+
+# Googlebot and Mediapartners crawlers for AdSense validation
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://careersbuz.com/sitemap.xml
