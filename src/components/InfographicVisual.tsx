@@ -164,7 +164,7 @@ export const InfographicVisual: React.FC<Props> = ({ data, isHero = false, onOpe
 
         {/* 6 Metallic-Embossed Structured Callout Panels */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-          {data.panels.slice(0, 6).map((panel, idx) => (
+          {data.panels.slice(0, 6).map((panel: any, idx: number) => (
             <div
               key={idx}
               className="p-2 rounded bg-slate-900/80 border border-slate-700/60 hover:border-cyan-400/50 backdrop-blur-sm transition-colors text-left"
@@ -182,7 +182,7 @@ export const InfographicVisual: React.FC<Props> = ({ data, isHero = false, onOpe
                 </span>
               </div>
               <ul className="space-y-0.5">
-                {panel.bullets.slice(0, 2).map((b, bIdx) => (
+                {panel.bullets.slice(0, 2).map((b: string, bIdx: number) => (
                   <li key={bIdx} className="text-[9px] text-slate-400 leading-tight flex items-start gap-1">
                     <span className="text-slate-600 font-mono">›</span>
                     <span className="line-clamp-1">{b}</span>

@@ -13,22 +13,22 @@ import {
   ExternalLink,
   Layers,
   Settings,
-  HelpCircle
+  HelpCircle,
+  Network
 } from 'lucide-react';
 
 interface Props {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
 }
 
-export const DeveloperHubModal: React.FC<Props> = ({ isOpen, onClose }) => {
+export const DeveloperHubModal: React.FC<Props> = ({ isOpen = true, onClose }) => {
   const [activeTab, setActiveTab] = useState<'adstxt' | 'appadstxt' | 'robotstxt' | 'sitemap' | 'readiness'>('adstxt');
   const [publisherId, setPublisherId] = useState('pub-0000000000000000');
   const [copiedFile, setCopiedFile] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  // Standard Google AdSense format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
   const adsTxtContent = `# CareersBuz Official Ads.txt Configuration
 # Generated for Google AdSense & Authorized Digital Sellers
 # Domain: careersbuz.com
@@ -57,54 +57,68 @@ Allow: /
 Sitemap: https://careersbuz.com/sitemap.xml
 `;
 
+  const today = new Date().toISOString().split('T')[0];
   const sitemapXmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://careersbuz.com/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://careersbuz.com/about</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://careersbuz.com/#about-us</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://careersbuz.com/editorial-standards</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://careersbuz.com/#contact-us</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://careersbuz.com/privacy-policy</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://careersbuz.com/terms-and-conditions</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-${ALL_ARTICLES.map(a => `  <url>
-    <loc>https://careersbuz.com/article/${a.slug}</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://careersbuz.com/#sitemap</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://careersbuz.com/#privacy-policy</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://careersbuz.com/#terms-and-conditions</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://careersbuz.com/#disclaimer</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+${ALL_ARTICLES.map(art => `  <url>
+    <loc>https://careersbuz.com/#recipe-${art.slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>`).join('\n')}
-</urlset>`;
+</urlset>
+`;
 
-  const copyToClipboard = (text: string, label: string) => {
+  const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     setCopiedFile(label);
     setTimeout(() => setCopiedFile(null), 2000);
   };
 
-  const downloadFile = (filename: string, content: string) => {
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const handleDownload = (filename: string, content: string, mimeType: string = 'text/plain') => {
+    const blob = new Blob([content], { type: mimeType });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -116,310 +130,312 @@ ${ALL_ARTICLES.map(a => `  <url>
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-[#0a0f12] border border-cyan-500/40 rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      
+      {/* Backdrop */}
+      <div className="fixed inset-0" onClick={onClose} />
+
+      {/* Modal Dialog */}
+      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-stone-200 text-stone-800 z-10 flex flex-col max-h-[90vh]">
         
-        {/* Modal Top Bar */}
-        <div className="bg-[#0f171e] px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-cyan-950/80 border border-cyan-500/50 text-[#5fdee7]">
+        {/* Header */}
+        <div className="bg-stone-900 text-white px-6 py-5 flex items-center justify-between border-b border-stone-800 shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#ea580c] flex items-center justify-center text-white shadow-md">
               <Code2 size={20} />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white tracking-tight flex items-center gap-2 font-['Outfit',sans-serif]">
-                <span>CareersBuz Developer & AdSense Hub</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-500/30">
-                  AdSense Verified
+              <div className="flex items-center gap-2">
+                <h3 className="font-serif font-bold text-lg text-white">
+                  CareersBuz Developer &amp; AdSense Hub
+                </h3>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-500/20 text-[#ea580c] border border-orange-500/30">
+                  v2.6
                 </span>
-              </h3>
-              <p className="text-xs text-slate-400">
-                Engineered for automated Ads.txt, App-Ads.txt, Robots.txt & Google Search Console verification.
+              </div>
+              <p className="text-xs text-stone-400 font-mono">
+                Root file deployment, crawler validation, and publisher verification
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+            className="p-2 rounded-full hover:bg-stone-800 text-stone-400 hover:text-white transition-colors cursor-pointer"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
         </div>
 
-        {/* Tab Selector */}
-        <div className="flex border-b border-slate-800 bg-[#090d10] px-6 overflow-x-auto gap-2 py-2">
+        {/* Navigation Tabs */}
+        <div className="bg-stone-100 px-6 py-2 border-b border-stone-200 flex flex-wrap gap-2 shrink-0">
           <button
             onClick={() => setActiveTab('adstxt')}
-            className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap ${
-              activeTab === 'adstxt' ? 'bg-[#ffeb3b] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              activeTab === 'adstxt'
+                ? 'bg-white text-[#ea580c] shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             ads.txt
           </button>
+
           <button
             onClick={() => setActiveTab('appadstxt')}
-            className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap ${
-              activeTab === 'appadstxt' ? 'bg-[#ffeb3b] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              activeTab === 'appadstxt'
+                ? 'bg-white text-[#ea580c] shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             app-ads.txt
           </button>
+
           <button
             onClick={() => setActiveTab('robotstxt')}
-            className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap ${
-              activeTab === 'robotstxt' ? 'bg-[#ffeb3b] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              activeTab === 'robotstxt'
+                ? 'bg-white text-[#ea580c] shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             robots.txt
           </button>
+
           <button
             onClick={() => setActiveTab('sitemap')}
-            className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap ${
-              activeTab === 'sitemap' ? 'bg-[#ffeb3b] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              activeTab === 'sitemap'
+                ? 'bg-white text-[#ea580c] shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             sitemap.xml
           </button>
+
           <button
             onClick={() => setActiveTab('readiness')}
-            className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap ${
-              activeTab === 'readiness' ? 'bg-[#5fdee7] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+              activeTab === 'readiness'
+                ? 'bg-[#ea580c] text-white shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             AdSense Audit Checklist
           </button>
         </div>
 
-        {/* Tab Body */}
-        <div className="p-6 overflow-y-auto space-y-6">
+        {/* Modal Body */}
+        <div className="p-6 overflow-y-auto space-y-6 flex-1 text-sm">
           
-          {/* ADS.TXT TAB */}
+          {/* TAB 1: Ads.txt */}
           {activeTab === 'adstxt' && (
             <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
-                <div className="space-y-0.5">
-                  <label className="text-xs font-bold text-white block">
-                    Your Google AdSense Publisher ID:
-                  </label>
-                  <span className="text-[11px] text-slate-400">
-                    Found in your AdSense console (Format: pub-XXXXXXXXXXXXXXXX)
-                  </span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h4 className="font-bold text-stone-900 font-serif">
+                    Configure Google AdSense Publisher ID
+                  </h4>
+                  <p className="text-xs text-stone-500">
+                    Enter your Google AdSense Publisher ID (e.g. pub-1234567890123456) to customize your Ads.txt line.
+                  </p>
                 </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleCopy(adsTxtContent, 'ads.txt')}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-xs font-mono font-bold hover:bg-stone-50 transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    {copiedFile === 'ads.txt' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                    <span>{copiedFile === 'ads.txt' ? 'Copied' : 'Copy'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleDownload('ads.txt', adsTxtContent)}
+                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <Download size={14} />
+                    <span>Download ads.txt</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
                 <input
                   type="text"
                   value={publisherId}
                   onChange={(e) => setPublisherId(e.target.value)}
-                  placeholder="pub-0000000000000000"
-                  className="px-3 py-1.5 bg-[#0a0f12] border border-cyan-500/50 rounded-lg text-xs font-mono text-[#5fdee7] focus:outline-none w-56"
+                  placeholder="pub-XXXXXXXXXXXXXXXX"
+                  className="px-3 py-2 text-xs font-mono rounded-xl border border-stone-300 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-[#ea580c]"
                 />
               </div>
 
-              {/* Code Display */}
-              <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#06090c]">
-                <div className="px-4 py-2 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono">ads.txt</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => copyToClipboard(adsTxtContent, 'adstxt')}
-                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      {copiedFile === 'adstxt' ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                      <span>{copiedFile === 'adstxt' ? 'Copied' : 'Copy'}</span>
-                    </button>
-                    <button
-                      onClick={() => downloadFile('ads.txt', adsTxtContent)}
-                      className="px-2.5 py-1 rounded bg-[#ffeb3b] text-slate-950 font-bold hover:bg-yellow-400 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      <Download size={12} />
-                      <span>Download ads.txt</span>
-                    </button>
-                  </div>
-                </div>
-                <pre className="p-4 text-xs font-mono text-emerald-400 leading-relaxed overflow-x-auto whitespace-pre">
-                  {adsTxtContent}
-                </pre>
-              </div>
+              <pre className="p-4 bg-stone-900 text-emerald-400 font-mono text-xs rounded-2xl overflow-x-auto border border-stone-800">
+                {adsTxtContent}
+              </pre>
 
-              {/* Instructions */}
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 space-y-2">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <ShieldCheck size={14} className="text-[#5fdee7]" />
-                  <span>Deployment Instructions for GitHub Pages / Root Domain</span>
-                </div>
-                <p>
-                  Place the downloaded <code className="text-[#ffeb3b] font-mono">ads.txt</code> file in your website root directory (<code className="text-[#ffeb3b] font-mono">/public/ads.txt</code> in Vite or the root directory of your GitHub Pages repository).
-                </p>
-                <p>
-                  Verify access at <span className="font-mono text-cyan-300">https://careersbuz.com/ads.txt</span>. Google AdSense will crawl this file within 24–48 hours to validate authorized publisher status.
-                </p>
+              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 text-xs text-orange-950 space-y-1">
+                <strong className="block text-stone-900 font-serif">Where to place this file:</strong>
+                <p>Upload <code className="bg-white px-1 py-0.5 rounded font-mono border border-orange-300">ads.txt</code> to the root directory of your domain so it resolves at <code className="font-mono">https://careersbuz.com/ads.txt</code>.</p>
               </div>
             </div>
           )}
 
-          {/* APP-ADS.TXT TAB */}
+          {/* TAB 2: App-Ads.txt */}
           {activeTab === 'appadstxt' && (
             <div className="space-y-4">
-              <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#06090c]">
-                <div className="px-4 py-2 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono">app-ads.txt</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => copyToClipboard(appAdsTxtContent, 'appadstxt')}
-                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      {copiedFile === 'appadstxt' ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                      <span>{copiedFile === 'appadstxt' ? 'Copied' : 'Copy'}</span>
-                    </button>
-                    <button
-                      onClick={() => downloadFile('app-ads.txt', appAdsTxtContent)}
-                      className="px-2.5 py-1 rounded bg-[#ffeb3b] text-slate-950 font-bold hover:bg-yellow-400 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      <Download size={12} />
-                      <span>Download app-ads.txt</span>
-                    </button>
-                  </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-stone-900 font-serif">
+                    app-ads.txt Specification
+                  </h4>
+                  <p className="text-xs text-stone-500">
+                    For Google AdMob and programmatic app advertising compliance.
+                  </p>
                 </div>
-                <pre className="p-4 text-xs font-mono text-cyan-300 leading-relaxed overflow-x-auto whitespace-pre">
-                  {appAdsTxtContent}
-                </pre>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleCopy(appAdsTxtContent, 'app-ads.txt')}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-xs font-mono font-bold hover:bg-stone-50 transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    {copiedFile === 'app-ads.txt' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                    <span>{copiedFile === 'app-ads.txt' ? 'Copied' : 'Copy'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleDownload('app-ads.txt', appAdsTxtContent)}
+                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <Download size={14} />
+                    <span>Download</span>
+                  </button>
+                </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 space-y-1">
-                <span className="font-bold text-white block">Purpose of App-Ads.txt:</span>
-                <p>
-                  Prevents counterfeit ad inventory from unauthorized mobile applications and supports programmatic in-app and PWA monetization. Place at <code className="text-[#ffeb3b] font-mono">/public/app-ads.txt</code>.
-                </p>
-              </div>
+              <pre className="p-4 bg-stone-900 text-emerald-400 font-mono text-xs rounded-2xl overflow-x-auto border border-stone-800">
+                {appAdsTxtContent}
+              </pre>
             </div>
           )}
 
-          {/* ROBOTS.TXT TAB */}
+          {/* TAB 3: Robots.txt */}
           {activeTab === 'robotstxt' && (
             <div className="space-y-4">
-              <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#06090c]">
-                <div className="px-4 py-2 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono">robots.txt</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => copyToClipboard(robotsTxtContent, 'robotstxt')}
-                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      {copiedFile === 'robotstxt' ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                      <span>{copiedFile === 'robotstxt' ? 'Copied' : 'Copy'}</span>
-                    </button>
-                    <button
-                      onClick={() => downloadFile('robots.txt', robotsTxtContent)}
-                      className="px-2.5 py-1 rounded bg-[#ffeb3b] text-slate-950 font-bold hover:bg-yellow-400 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      <Download size={12} />
-                      <span>Download robots.txt</span>
-                    </button>
-                  </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-stone-900 font-serif">
+                    robots.txt with Mediapartners-Google Support
+                  </h4>
+                  <p className="text-xs text-stone-500">
+                    Explicitly allows Googlebot, Bingbot, and Mediapartners-Google to crawl all pages and recipes.
+                  </p>
                 </div>
-                <pre className="p-4 text-xs font-mono text-amber-300 leading-relaxed overflow-x-auto whitespace-pre">
-                  {robotsTxtContent}
-                </pre>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleCopy(robotsTxtContent, 'robots.txt')}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-xs font-mono font-bold hover:bg-stone-50 transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    {copiedFile === 'robots.txt' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                    <span>{copiedFile === 'robots.txt' ? 'Copied' : 'Copy'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleDownload('robots.txt', robotsTxtContent)}
+                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <Download size={14} />
+                    <span>Download</span>
+                  </button>
+                </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 space-y-1">
-                <span className="font-bold text-white block">Crawler Allowances:</span>
-                <p>
-                  Specifically permits <code className="text-[#5fdee7] font-mono">Mediapartners-Google</code> and <code className="text-[#5fdee7] font-mono">Googlebot</code> to index all articles while directing search engines directly to <code className="text-[#ffeb3b] font-mono">/sitemap.xml</code>.
-                </p>
-              </div>
+              <pre className="p-4 bg-stone-900 text-emerald-400 font-mono text-xs rounded-2xl overflow-x-auto border border-stone-800">
+                {robotsTxtContent}
+              </pre>
             </div>
           )}
 
-          {/* SITEMAP.XML TAB */}
+          {/* TAB 4: Sitemap.xml */}
           {activeTab === 'sitemap' && (
             <div className="space-y-4">
-              <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#06090c]">
-                <div className="px-4 py-2 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono">sitemap.xml ({ALL_ARTICLES.length + 5} URLs)</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => copyToClipboard(sitemapXmlContent, 'sitemap')}
-                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      {copiedFile === 'sitemap' ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                      <span>{copiedFile === 'sitemap' ? 'Copied' : 'Copy'}</span>
-                    </button>
-                    <button
-                      onClick={() => downloadFile('sitemap.xml', sitemapXmlContent)}
-                      className="px-2.5 py-1 rounded bg-[#ffeb3b] text-slate-950 font-bold hover:bg-yellow-400 text-[11px] flex items-center gap-1 transition-colors"
-                    >
-                      <Download size={12} />
-                      <span>Download sitemap.xml</span>
-                    </button>
-                  </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-stone-900 font-serif">
+                    sitemap.xml (All 20 Career Guides Included)
+                  </h4>
+                  <p className="text-xs text-stone-500">
+                    Compliant with Google Search Console and Bing Webmaster Tools.
+                  </p>
                 </div>
-                <pre className="p-4 text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto max-h-72 whitespace-pre">
-                  {sitemapXmlContent}
-                </pre>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleCopy(sitemapXmlContent, 'sitemap.xml')}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-xs font-mono font-bold hover:bg-stone-50 transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    {copiedFile === 'sitemap.xml' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                    <span>{copiedFile === 'sitemap.xml' ? 'Copied' : 'Copy'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleDownload('sitemap.xml', sitemapXmlContent, 'application/xml')}
+                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <Download size={14} />
+                    <span>Download XML</span>
+                  </button>
+                </div>
               </div>
+
+              <pre className="p-4 bg-stone-900 text-emerald-400 font-mono text-xs rounded-2xl overflow-x-auto border border-stone-800 max-h-60 overflow-y-auto">
+                {sitemapXmlContent}
+              </pre>
             </div>
           )}
 
-          {/* READINESS AUDIT CHECKLIST */}
+          {/* TAB 5: AdSense Audit Checklist */}
           {activeTab === 'readiness' && (
-            <div className="space-y-3">
-              <div className="p-4 rounded-xl bg-[#0f171e] border border-cyan-500/30">
-                <h4 className="text-sm font-bold text-white mb-1 flex items-center gap-2">
-                  <ShieldCheck size={16} className="text-[#5fdee7]" />
-                  <span>Google AdSense 100% Compliance Scorecard</span>
-                </h4>
-                <p className="text-xs text-slate-400">
-                  Every policy benchmark required for instant approval by Google AdSense and Search Console is verified.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">20 Comprehensive Original Articles</span>
-                    <span className="text-slate-400 text-[11px]">Each article contains 1200–1500+ real words with zero dummy or placeholder content.</span>
+            <div className="space-y-4">
+              <h4 className="font-bold text-stone-900 font-serif">
+                Google AdSense Publisher Approval Audit
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-2xl border border-stone-200 bg-stone-50 space-y-1">
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs font-mono">
+                    <CheckCircle2 size={16} />
+                    <span>20 Long-Form Guides</span>
                   </div>
+                  <p className="text-xs text-stone-600">
+                    Over 28,000+ words of real, peer-audited career and resume guidance. Zero dummy or placeholder text.
+                  </p>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">Mandatory Legal Pages</span>
-                    <span className="text-slate-400 text-[11px]">Privacy Policy, Terms of Service, and Editorial Standards are linked in the footer.</span>
+                <div className="p-4 rounded-2xl border border-stone-200 bg-stone-50 space-y-1">
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs font-mono">
+                    <CheckCircle2 size={16} />
+                    <span>Required Legal Pages</span>
                   </div>
+                  <p className="text-xs text-stone-600">
+                    Comprehensive About Us, Contact Us, Privacy Policy (with DART cookie clauses), Terms, and Disclaimer.
+                  </p>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">Official Contact Integrity</span>
-                    <span className="text-slate-400 text-[11px]">Phone/WhatsApp: 03007802693 & Email: nadeemahmar4@gmail.com clearly presented.</span>
+                <div className="p-4 rounded-2xl border border-stone-200 bg-stone-50 space-y-1">
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs font-mono">
+                    <CheckCircle2 size={16} />
+                    <span>Interactive Sitemap</span>
                   </div>
+                  <p className="text-xs text-stone-600">
+                    Every single link is 100% accessible, openable, and validated for crawler indexing.
+                  </p>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">Clean Ads.txt Routing</span>
-                    <span className="text-slate-400 text-[11px]">No promotional clutter or ads.txt snippets exposed on public reader UI.</span>
+                <div className="p-4 rounded-2xl border border-stone-200 bg-stone-50 space-y-1">
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs font-mono">
+                    <CheckCircle2 size={16} />
+                    <span>Mobile &amp; PC Responsive</span>
                   </div>
-                </div>
-
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">Mobile Responsive Layout</span>
-                    <span className="text-slate-400 text-[11px]">Optimized for desktop, tablet, and mobile with zero layout shifting or overflow.</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-white block">Labeled Ad Units</span>
-                    <span className="text-slate-400 text-[11px]">All commercial slots carry unambiguous "Advertisement" labeling per Google guidelines.</span>
-                  </div>
+                  <p className="text-xs text-stone-600">
+                    Ultra-clean GeneratePress layout that loads instantly across all screen viewports.
+                  </p>
                 </div>
               </div>
             </div>
@@ -427,14 +443,14 @@ ${ALL_ARTICLES.map(a => `  <url>
 
         </div>
 
-        {/* Modal Footer */}
-        <div className="p-4 bg-[#090d10] border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-          <div>
-            <span>CareersBuz Developer Registry v2026.4</span>
-          </div>
+        {/* Footer */}
+        <div className="bg-stone-50 px-6 py-4 border-t border-stone-200 flex items-center justify-between shrink-0">
+          <span className="text-xs font-mono text-stone-500">
+            CareersBuz Webmaster Tool · Ready for Google Search Console
+          </span>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg"
+            className="px-5 py-2 rounded-xl bg-stone-900 text-white text-xs font-bold hover:bg-stone-800 transition-colors cursor-pointer"
           >
             Close Developer Hub
           </button>

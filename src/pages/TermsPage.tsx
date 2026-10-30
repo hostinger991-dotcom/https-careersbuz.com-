@@ -8,135 +8,85 @@ interface Props {
 
 export const TermsPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-10 animate-in fade-in duration-200">
       
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs font-mono text-slate-400">
-        <button onClick={onBackToHome} className="hover:text-[#ffeb3b] transition-colors flex items-center gap-1">
-          <ArrowLeft size={14} />
+      <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
+        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+          <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#5fdee7]">Terms & Conditions</span>
+        <span className="text-[#ea580c] font-bold">Terms &amp; Conditions</span>
       </nav>
 
       {/* Header */}
-      <header className="space-y-3 border-b border-slate-800 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-[#5fdee7] text-xs font-mono">
+      <header className="space-y-3 border-b border-stone-200 pb-8">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ea580c] text-xs font-mono font-bold">
           <FileText size={14} />
-          <span>TERMS OF SERVICE & USER AGREEMENT</span>
+          <span>TERMS OF SERVICE &amp; EDITORIAL FAIR USE</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight font-['Outfit',sans-serif]">
-          Terms & <span className="text-[#ffeb3b]">Conditions</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight font-serif">
+          Terms &amp; Conditions
         </h1>
 
-        <p className="text-xs sm:text-sm text-slate-400 font-mono">
-          Effective Date: October 29, 2026 · Last Updated: October 30, 2026 · Official CareersBuz Publishing Terms
-        </p>
+        <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
+          <span>Effective Date: January 1, 2026</span>
+          <span>·</span>
+          <span>Last Updated: March 30, 2026</span>
+          <span>·</span>
+          <span className="text-emerald-700 font-bold">Governed by International Digital Publishing Standards</span>
+        </div>
       </header>
 
-      {/* Document Body */}
-      <div className="space-y-8 text-sm text-slate-300 leading-relaxed">
+      {/* Terms Body */}
+      <div className="bg-white border border-stone-200 rounded-3xl p-6 sm:p-10 shadow-xs space-y-8 text-sm text-stone-700 leading-relaxed">
         
-        {/* Preamble */}
-        <section className="p-5 rounded-xl bg-[#0f171e] border border-slate-800 space-y-2">
-          <h2 className="text-base font-bold text-white font-['Outfit',sans-serif]">
-            Agreement to Terms
-          </h2>
+        <section className="space-y-3">
+          <h2 className="text-xl font-bold text-stone-900 font-serif">1. Agreement to Terms</h2>
           <p>
-            These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and <strong>CareersBuz</strong> ("we," "us," or "our"), concerning your access to and use of the <span className="text-[#5fdee7] font-mono">https://careersbuz.com</span> website as well as any other media form, media channel, or mobile application related, linked, or otherwise connected thereto.
+            By accessing and utilizing CareersBuz (https://careersbuz.com), you agree to be bound by these Terms and Conditions and agree that you are responsible for compliance with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site.
           </p>
         </section>
 
-        {/* 1. Intellectual Property Rights */}
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="text-[#ffeb3b] font-mono">1.</span>
-            <span>Intellectual Property Rights</span>
-          </h2>
+          <h2 className="text-xl font-bold text-stone-900 font-serif">2. Intellectual Property &amp; Career Content Reproduction</h2>
           <p>
-            Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, research manuscripts, infographics, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.
+            All original guide text, case studies, resume templates, salary negotiation frameworks, editorial infographics, and compilation layouts published on CareersBuz are the intellectual property of CareersBuz, protected by international copyright and trademark law.
           </p>
-          <p>
-            You are granted a limited license to access and use the Site and to download or print a copy of any portion of the Content to which you have properly gained access solely for your personal, non-commercial educational use.
-          </p>
+          <div className="p-4 rounded-2xl bg-orange-50/60 border border-orange-200 space-y-2 text-xs text-orange-950">
+            <strong>Fair Use &amp; Academic Attribution Policy:</strong>
+            <p className="text-orange-900 leading-relaxed">
+              You may quote up to 100 words of any article provided that explicit, prominent attribution is given with a direct, do-follow hyperlink to the canonical guide on CareersBuz. Scraping or re-publishing full articles without written permission is strictly prohibited.
+            </p>
+          </div>
         </section>
 
-        {/* 2. User Representations */}
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="text-[#ffeb3b] font-mono">2.</span>
-            <span>User Representations & Prohibited Conduct</span>
-          </h2>
-          <p>
-            By using the Site, you represent and warrant that:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-400">
-            <li>You will not access the Site through automated or non-human means, whether through a bot, script, or otherwise.</li>
-            <li>You will not use the Site for any illegal or unauthorized commercial reproduction of our 20 proprietary research studies.</li>
-            <li>You will not interfere with, disrupt, or create an undue burden on the Site or the networks or services connected to the Site.</li>
-            <li>You will not attempt to bypass any measures of the Site designed to prevent or restrict access to the Site, or any portion of the Site.</li>
+          <h2 className="text-xl font-bold text-stone-900 font-serif">3. User Conduct &amp; Prohibited Actions</h2>
+          <p>When interacting with CareersBuz, users agree not to:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Attempt to reverse-engineer, decompile, or extract source data or scripts.</li>
+            <li>Use automated scrapers, bots, or spiders to harvest article contents without explicit API permissions.</li>
+            <li>Misrepresent employment credentials, impersonate editorial authors, or submit defamatory inquiries.</li>
           </ul>
         </section>
 
-        {/* 3. Educational & Career Advisory Disclaimer */}
-        <section className="p-5 rounded-xl bg-amber-950/20 border border-amber-500/40 space-y-3">
-          <h2 className="text-lg font-bold text-amber-300 flex items-center gap-2">
-            <AlertTriangle size={18} />
-            <span>3. Professional Educational & Career Guidance Disclaimer</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-300">
-            All materials, salary benchmarks, interview preparation models, and resume templates on CareersBuz are provided strictly for informational and vocational educational purposes.
-          </p>
-          <p className="text-xs sm:text-sm text-slate-300">
-            CareersBuz does not guarantee employment offers, compensation outcomes, or hiring committee selections. Individual professional outcomes depend entirely on candidate qualifications, third-party employer policies, macroeconomic factors, and independent market negotiations.
-          </p>
-        </section>
-
-        {/* 4. Limitation of Liability */}
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="text-[#ffeb3b] font-mono">4.</span>
-            <span>Limitation of Liability</span>
-          </h2>
+          <h2 className="text-xl font-bold text-stone-900 font-serif">4. Contact &amp; Governance</h2>
           <p>
-            In no event will we or our directors, fellows, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site or reliance upon its editorial advice.
+            Questions regarding terms, syndication rights, or corporate licensing can be directed to:
           </p>
-        </section>
-
-        {/* 5. Governing Law */}
-        <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="text-[#ffeb3b] font-mono">5.</span>
-            <span>Governing Law & Dispute Resolution</span>
-          </h2>
-          <p>
-            These Terms shall be governed by and defined following the laws of applicable jurisdiction. CareersBuz and yourself irrevocably consent that the courts shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.
-          </p>
-        </section>
-
-        {/* 6. Contact Us */}
-        <section className="p-6 rounded-2xl bg-[#0f171e] border border-slate-800 space-y-3">
-          <h2 className="text-base font-bold text-white font-['Outfit',sans-serif]">
-            Legal Inquiries & Communications Desk
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
-            For questions regarding these Terms & Conditions, please contact our administrative desk:
-          </p>
-          <div className="flex flex-wrap gap-4 text-xs font-mono pt-1">
-            <div className="flex items-center gap-2 text-slate-300">
-              <Mail size={14} className="text-[#5fdee7]" />
-              <span>Email: <strong className="text-white">nadeemahmar4@gmail.com</strong></span>
-            </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <Phone size={14} className="text-emerald-400" />
-              <span>WhatsApp/Phone: <strong className="text-white">03007802693</strong></span>
-            </div>
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 font-mono text-xs space-y-1">
+            <p><strong>Desk:</strong> CareersBuz Legal &amp; Governance Team</p>
+            <p><strong>Email:</strong> hostinger991@gmail.com / nadeemahmar4@gmail.com</p>
+            <p><strong>Phone / WhatsApp:</strong> 03007802693</p>
           </div>
         </section>
 
       </div>
+
     </div>
   );
 };

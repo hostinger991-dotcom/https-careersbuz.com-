@@ -10,5 +10,8 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-# Sitemap Location
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Location (Directly accessible XML)
 Sitemap: https://careersbuz.com/sitemap.xml

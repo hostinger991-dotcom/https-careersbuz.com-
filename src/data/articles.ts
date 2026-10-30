@@ -23,55 +23,60 @@ export const CATEGORIES: CategoryMeta[] = [
   {
     id: 'job-search',
     label: 'Job Search & Placement',
-    tagline: 'STRATEGIC PLACEMENT & RECONNAISSANCE',
+    tagline: 'STRATEGIC HEADHUNTING & MARKET NAVIGATION',
     count: 5,
-    description: 'Empirical methodologies for labor market navigation, remote work architecture, and executive placement.'
+    description: 'Systematic approaches to exploring high-growth sectors, conquering job fairs, launching entry-level paths, and mastering remote work environments.'
   },
   {
     id: 'resume-letter',
     label: 'Resume & Cover Letter',
-    tagline: 'PRECISION DOCUMENT ENGINEERING',
+    tagline: 'ATS REVERSE-ENGINEERING & DOCUMENT DESIGN',
     count: 5,
-    description: 'ATS-optimized structural compilation, dynamic action verbs, and persuasive commercial narratives.'
+    description: 'Algorithmic optimization, functional and reverse-chronological blueprints, and targeted skill articulation to beat modern ATS filters.'
   },
   {
     id: 'interview-prep',
     label: 'Interview Preparation',
-    tagline: 'TACTICAL INTERACTION MASTERY',
+    tagline: 'HIGH-STAKES DIALOGUE & PSYCHOLOGICAL MASTERY',
     count: 5,
-    description: 'Behavioral deconstruction, the STAR method matrix, 30-second pitches, and post-interview closing.'
+    description: 'Master behavioral frameworks, technical system design inquiries, behavioral STAR storytelling, and tactical post-interview follow-ups.'
   },
   {
     id: 'career-advice',
     label: 'Career Advice & Upskilling',
-    tagline: 'CAPITAL COMPOUNDING & SOVEREIGNTY',
+    tagline: 'EXECUTIVE TRAJECTORY & VALUE MAXIMIZATION',
     count: 5,
-    description: 'Total compensation negotiation, cross-industry pivots, hard technical stacks, and executive sponsorship.'
+    description: 'Advanced salary negotiation, leadership development, professional networking, burnout mitigation, and seamless career pivoting.'
   }
 ];
 
-export function getArticleBySlug(slug: string): Article | undefined {
-  return ALL_ARTICLES.find(a => a.slug === slug);
-}
-
-export function getArticlesByCategory(category: CategoryId): Article[] {
-  return ALL_ARTICLES.filter(a => a.category === category);
-}
-
-export function searchArticles(query: string, category?: CategoryId | 'all'): Article[] {
-  let list = ALL_ARTICLES;
-  if (category && category !== 'all') {
-    list = list.filter(a => a.category === category);
+export function getArticlesByCategory(categoryId: CategoryId | 'all'): Article[] {
+  if (categoryId === 'all') {
+    return ALL_ARTICLES;
   }
+  return ALL_ARTICLES.filter(article => article.category === categoryId);
+}
 
-  if (!query.trim()) return list;
+export function searchArticles(query: string): Article[] {
+  const clean = query.trim().toLowerCase();
+  if (!clean) return ALL_ARTICLES;
+  
+  return ALL_ARTICLES.filter(article => {
+    const matchTitle = article.title.toLowerCase().includes(clean);
+    const matchDeck = article.deck.toLowerCase().includes(clean);
+    const matchKeyword = article.keyword.toLowerCase().includes(clean);
+    const matchSummary = article.summary.toLowerCase().includes(clean);
+    const matchCategory = article.categoryLabel.toLowerCase().includes(clean);
+    const matchTags = article.tags ? article.tags.some(t => t.toLowerCase().includes(clean)) : false;
+    const matchAuthor = article.author?.name.toLowerCase().includes(clean);
+    return matchTitle || matchDeck || matchKeyword || matchSummary || matchCategory || matchTags || matchAuthor;
+  });
+}
 
-  const q = query.toLowerCase();
-  return list.filter(a => 
-    a.title.toLowerCase().includes(q) ||
-    a.keyword.toLowerCase().includes(q) ||
-    a.deck.toLowerCase().includes(q) ||
-    a.summary.toLowerCase().includes(q) ||
-    a.tags.some(t => t.toLowerCase().includes(q))
-  );
+export function getArticleById(id: string): Article | undefined {
+  return ALL_ARTICLES.find(article => article.id === id || article.slug === id);
+}
+
+export function getFeaturedArticle(): Article {
+  return ALL_ARTICLES[0];
 }

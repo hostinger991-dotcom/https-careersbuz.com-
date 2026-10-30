@@ -1,16 +1,15 @@
 import React from 'react';
 import { 
-  Compass, 
-  Target, 
+  Briefcase, 
   Award, 
   Users, 
   ShieldCheck, 
   ArrowLeft, 
   CheckCircle2, 
   BookOpen, 
-  TrendingUp,
-  Mail,
-  Phone
+  Mail, 
+  Phone,
+  Target
 } from 'lucide-react';
 
 interface Props {
@@ -21,175 +20,195 @@ interface Props {
 const EDITORIAL_LEADERS = [
   {
     name: 'Dr. Evelyn Vance',
-    role: 'Editor-in-Chief & Organizational Psychologist',
-    bio: 'Ph.D. Industrial/Organizational Psychology, Harvard. 15+ years advising Fortune 500 boards on talent analytics and leadership succession.',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80'
-  },
-  {
-    name: 'Samantha Cross',
-    role: 'Principal Resume & Executive Communications Director',
-    bio: 'Former Global Executive Recruiter at Russell Reynolds. Reviewed over 24,000 corporate resumes and engineered C-suite placement dossiers.',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&auto=format&fit=crop&q=80'
-  },
-  {
-    name: 'Julian Sterling',
-    role: 'Technical Career Architect & Distributed Systems Lead',
-    bio: 'Ex-Staff Infrastructure Engineer at Google & Stripe. Architected multi-region cloud infrastructures and remote engineering ladders.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80'
+    role: 'Head of Career Placement & Organizational Psychology',
+    bio: 'Ph.D. in Organizational Psychology (Columbia). 15+ years advising Fortune 100 enterprise leadership transitions, executive search mapping, and cognitive career trajectory modeling.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
   {
     name: 'Marcus Thorne',
-    role: 'Senior Talent Acquisition Editor & Early Career Lead',
-    bio: '12 years directing campus recruiting across high-growth Silicon Valley and Boston tech hubs, breaking the zero-experience paradox.',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80'
+    role: 'Senior Executive Recruiter & VP of Talent Acquisition',
+    bio: 'Former global tech recruiting lead across Silicon Valley and London fintech hubs. Overseen 4,500+ engineering, product, and leadership hires from seed to IPO.',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80'
+  },
+  {
+    name: 'Samantha Cross',
+    role: 'Principal Resume Strategist & ATS Algorithmic Auditor',
+    bio: 'Pioneered applicant tracking parsing audits across Workday, Taleo, Greenhouse, and Lever. Coached over 3,000 mid-to-senior candidates into Tier-1 roles.',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80'
+  },
+  {
+    name: 'Elena Rostova',
+    role: 'Director of Talent Alliances & Career Expo Organizer',
+    bio: 'Organizer of major international hiring summits and multi-tier tech expos. Specialist in executive salary benchmarking, stock option equity modeling, and cross-border placement.',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80'
   }
 ];
 
 export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12 animate-in fade-in duration-200">
       
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs font-mono text-slate-400">
-        <button onClick={onBackToHome} className="hover:text-[#ffeb3b] transition-colors flex items-center gap-1">
-          <ArrowLeft size={14} />
+      <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
+        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+          <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#5fdee7]">About Us</span>
+        <span className="text-[#ea580c] font-bold">About Us</span>
       </nav>
 
-      {/* Hero Header */}
-      <header className="space-y-4 border-b border-slate-800 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-[#5fdee7] text-xs font-mono">
-          <Compass size={14} />
-          <span>OUR IDENTITY & INSTITUTIONAL CHARTER</span>
+      {/* Hero Mission Section */}
+      <div className="bg-white border border-stone-200 rounded-3xl p-6 sm:p-10 shadow-xs space-y-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-[#ea580c] text-xs font-bold font-mono">
+          <Briefcase size={14} />
+          <span>INDEPENDENT CAREER JOURNALISM</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight font-['Outfit',sans-serif]">
-          About <span className="text-[#ffeb3b]">CareersBuz</span>
+        <h1 className="text-3xl sm:text-5xl font-bold font-serif text-stone-900 tracking-tight leading-tight">
+          Engineering Careers Through Empirical Data, Not Fortune-Cookie Advice
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed">
-          An independent, peer-reviewed journal of career management, job placement, resume engineering, and professional upskilling—published daily for modern professionals navigating an algorithmic global economy.
+        <p className="text-base text-stone-600 leading-relaxed max-w-3xl font-sans">
+          CareersBuz was established to replace vague, recycled vocational platitudes with rigorous, data-driven frameworks. We investigate modern employment markets the way an algorithmic engineer analyzes distributed systems—dissecting automated applicant tracking systems (ATS), game-theoretic compensation negotiations, behavioral interview scoring, and sustainable executive performance.
         </p>
-      </header>
 
-      {/* Mission & Founding Story */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
-          <h2 className="text-2xl font-bold text-white font-['Outfit',sans-serif]">
-            The Engineering Mindset Applied to Careers
-          </h2>
-          <p>
-            CareersBuz was established in response to the growing vacuum of rigorous, empirical career intelligence. While the internet is flooded with generic platitudes, subjective advice, and superficial listicles, modern professionals operate in an increasingly complex, algorithmic, and volatile economic landscape.
-          </p>
-          <p>
-            Applicant Tracking Systems (ATS), executive search algorithms, compensation bands, and remote distributed workflows are systems that can be decompiled, benchmarked, and mastered. We treat vocational advancement not as a lottery of lucky breaks, but as a disciplined engineering challenge.
-          </p>
-          <p>
-            Every guide published under our banner contains a minimum of 1,200 to 1,500 words, real-world case studies, verifiable formulas, and zero placeholder fluff.
-          </p>
-        </div>
-
-        <div className="p-6 rounded-2xl bg-[#0f171e] border border-cyan-500/30 space-y-4 shadow-xl">
-          <div className="text-xs font-mono text-[#5fdee7] uppercase tracking-wider font-bold">
-            Key Institutional Pillars
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-100">
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <span className="block text-2xl font-black text-[#ea580c] font-mono">20</span>
+            <span className="text-xs text-stone-600 font-medium">In-Depth Guides</span>
           </div>
-
-          <div className="space-y-3 text-xs sm:text-sm">
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 size={18} className="text-[#ffeb3b] shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block">100% Zero-Plagiarism Original Research</strong>
-                <span className="text-slate-400">All frameworks, case studies, and models are authored by verified practitioners.</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 size={18} className="text-[#ffeb3b] shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block">Empirical Compensation & Labor Data</strong>
-                <span className="text-slate-400">Salary bands and job market statistics are cross-referenced with Radford and Levels.fyi data.</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 size={18} className="text-[#ffeb3b] shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block">Strict Anti-Slop Discipline</strong>
-                <span className="text-slate-400">Zero placeholder summaries or generic advice; only actionable, step-by-step methodologies.</span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 size={18} className="text-[#ffeb3b] shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block">Transparent Governance & Compliance</strong>
-                <span className="text-slate-400">Fully compliant with Google Search Console, Google AdSense, and publisher standards.</span>
-              </div>
-            </div>
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <span className="block text-2xl font-black text-[#ea580c] font-mono">100%</span>
+            <span className="text-xs text-stone-600 font-medium">Zero Plagiarism</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <span className="block text-2xl font-black text-[#ea580c] font-mono">1,400+</span>
+            <span className="text-xs text-stone-600 font-medium">Avg Words/Guide</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <span className="block text-2xl font-black text-emerald-600 font-mono">24h</span>
+            <span className="text-xs text-stone-600 font-medium">Desk SLA</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Editorial Team */}
-      <section className="space-y-6 pt-6 border-t border-slate-800">
-        <div>
-          <h2 className="text-2xl font-bold text-white font-['Outfit',sans-serif]">
-            Our Editorial Board & Senior Fellows
+      {/* The 4 Editorial Pillars */}
+      <div className="space-y-6">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+            Our Four Methodological Pillars
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Industry veterans, organizational psychologists, and former executive recruiters overseeing our research.
+          <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">
+            HOW EVERY CAREERSBUZ GUIDE IS RESEARCHED &amp; PEER-AUDITED
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+              01
+            </div>
+            <h3 className="font-serif font-bold text-lg text-stone-900">
+              ATS Reverse-Engineering
+            </h3>
+            <p className="text-xs text-stone-600 leading-relaxed">
+              We continually parse documents through modern parsing engines (Workday, Taleo, Greenhouse, iCIMS) to isolate keyword frequencies, formatting thresholds, and parsing choke-points.
+            </p>
+          </div>
+
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+              02
+            </div>
+            <h3 className="font-serif font-bold text-lg text-stone-900">
+              Behavioral Dialogue Calibration
+            </h3>
+            <p className="text-xs text-stone-600 leading-relaxed">
+              Interview strategies are grounded in industrial-organizational psychology. We dissect the STAR framework into quantitative metric storytelling that commands respect from senior interviewers.
+            </p>
+          </div>
+
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+              03
+            </div>
+            <h3 className="font-serif font-bold text-lg text-stone-900">
+              Executive Compensation Game Theory
+            </h3>
+            <p className="text-xs text-stone-600 leading-relaxed">
+              Salary negotiation is treated as cooperative game theory. We publish real benchmarks, equity vesting schedules, clawback protection clauses, and sign-on bonus maximization tactics.
+            </p>
+          </div>
+
+          <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+              04
+            </div>
+            <h3 className="font-serif font-bold text-lg text-stone-900">
+              Sustainable Compounding Over Burnout
+            </h3>
+            <p className="text-xs text-stone-600 leading-relaxed">
+              High performance is meaningless if it leads to chronic exhaustion. Every upskilling guide integrates mental clarity safeguards, deep-work architectures, and career boundary enforcement.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Editorial Board Profiles */}
+      <div className="space-y-6">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+            The CareersBuz Editorial Board
+          </h2>
+          <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">
+            PEER AUDITORS, TALENT DIRECTORS &amp; RECRUITING LEADERS
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {EDITORIAL_LEADERS.map((leader, idx) => (
-            <div key={idx} className="p-5 rounded-xl bg-[#0f171e] border border-slate-800 flex items-start gap-4">
+            <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-5 shadow-xs text-center space-y-3">
               <img
                 src={leader.avatar}
                 alt={leader.name}
-                className="w-14 h-14 rounded-full object-cover border-2 border-[#5fdee7]/60 shrink-0"
+                className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-orange-200"
               />
-              <div className="space-y-1">
-                <h3 className="font-bold text-white text-base">{leader.name}</h3>
-                <div className="text-xs font-mono text-[#ffeb3b]">{leader.role}</div>
-                <p className="text-xs text-slate-400 leading-relaxed">{leader.bio}</p>
+              <div>
+                <h4 className="font-serif font-bold text-sm text-stone-900">
+                  {leader.name}
+                </h4>
+                <p className="text-[11px] font-mono text-[#ea580c] font-semibold mt-0.5">
+                  {leader.role}
+                </p>
               </div>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                {leader.bio}
+              </p>
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* Official Contact Callout */}
-      <section className="p-6 rounded-2xl bg-gradient-to-r from-[#0f171e] to-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h3 className="text-base font-bold text-white mb-1 font-['Outfit',sans-serif]">
-            Have an Editorial Inquiry or Research Partnership?
+      {/* Institutional Contact Bar */}
+      <div className="bg-stone-900 text-stone-200 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="space-y-2 text-center sm:text-left">
+          <h3 className="text-xl font-bold font-serif text-white">
+            Have a Research Inquiry or Press Tip?
           </h3>
-          <p className="text-xs text-slate-400">
-            Reach our communications desk via official email or WhatsApp.
+          <p className="text-xs text-stone-400 max-w-xl">
+            Our editorial desk reviews corporate layoffs, hiring trends, and ATS updates daily. Reach out directly to our principal researchers.
           </p>
         </div>
-
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3">
           <button
             onClick={() => onNavigateTo('contact')}
-            className="px-4 py-2 rounded-lg bg-[#ffeb3b] text-slate-950 font-bold text-xs hover:bg-yellow-400 transition-colors"
+            className="px-5 py-2.5 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
           >
-            Contact Desk
+            Contact Editorial Desk
           </button>
-          <a
-            href="https://wa.me/923007802693"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 text-xs font-mono hover:bg-emerald-900 transition-colors"
-          >
-            WhatsApp: 03007802693
-          </a>
         </div>
-      </section>
+      </div>
 
     </div>
   );
