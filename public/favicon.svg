@@ -1,35 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Background Gradient: Rich Terracotta to Deep Russet -->
+    <linearGradient id="cbBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ea580c" />
-      <stop offset="100%" stop-color="#c2410c" />
+      <stop offset="50%" stop-color="#c2410c" />
+      <stop offset="100%" stop-color="#9a3412" />
     </linearGradient>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fde047" />
-      <stop offset="100%" stop-color="#f59e0b" />
+
+    <!-- Gold Accent Gradient for Upward Trajectory -->
+    <linearGradient id="cbGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
     </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.25" />
+
+    <!-- Subtle Drop Shadow for depth -->
+    <filter id="cbShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#431407" flood-opacity="0.35" />
     </filter>
   </defs>
 
-  <!-- Background Rounded Badge -->
-  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#badgeGrad)" stroke="#ffedd5" stroke-width="2" filter="url(#shadow)" />
+  <!-- Modern App Icon Squircle Container -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#cbBg)" stroke="#fdba74" stroke-width="1.5" filter="url(#cbShadow)" />
 
-  <!-- Briefcase Handle -->
-  <path d="M46 36 C46 26 82 26 82 36" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" />
+  <!-- Inner Subtle Accent Ring -->
+  <rect x="4.5" y="4.5" width="55" height="55" rx="13.5" fill="none" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.25" />
 
-  <!-- Briefcase Main Body -->
-  <rect x="22" y="38" width="84" height="64" rx="14" fill="#ffffff" />
+  <!-- Iconic Monogram "C" (Careers) -->
+  <path d="M 27 18 C 17.5 18 12 24.5 12 32 C 12 39.5 17.5 46 27 46 C 30.5 46 33.5 44.5 35 43 L 32.5 38.5 C 31 39.5 29 40.5 27 40.5 C 21.5 40.5 18 36.8 18 32 C 18 27.2 21.5 23.5 27 23.5 C 29 23.5 31 24.5 32.5 25.5 L 35 21 C 33.5 19.5 30.5 18 27 18 Z" fill="#ffffff" />
 
-  <!-- Briefcase Top Flap Cutout -->
-  <path d="M22 62 L64 74 L106 62" stroke="#ea580c" stroke-width="4" fill="none" stroke-linejoin="round" />
+  <!-- Iconic Monogram "B" (Buz) with Embedded Career Upward Arrow -->
+  <!-- Vertical Spine of B -->
+  <rect x="36" y="18" width="5.5" height="28" rx="2" fill="#ffffff" />
 
-  <!-- Center Gold Lock Emblem -->
-  <rect x="56" y="66" width="16" height="16" rx="4" fill="url(#goldGrad)" stroke="#d97706" stroke-width="1.5" />
-  <circle cx="64" cy="73" r="2.5" fill="#78350f" />
+  <!-- Upper Loop of B -->
+  <path d="M 39 18 L 47 18 C 50.5 18 53 20 53 23.5 C 53 27 50.5 29 47 29 L 39 29 Z" fill="#ffffff" />
+  <path d="M 41.5 22.5 L 46.5 22.5 C 47.8 22.5 48.8 23 48.8 24 C 48.8 25 47.8 25.5 46.5 25.5 L 41.5 25.5 Z" fill="#c2410c" />
 
-  <!-- Upward Trend Arrow Accent in Bottom Right -->
-  <circle cx="94" cy="94" r="18" fill="#10b981" stroke="#ffffff" stroke-width="3" />
-  <path d="M88 98 L98 88 M98 88 L92 88 M98 88 L98 94" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Lower Loop of B (Stylized Dynamic Career Forward Surge) -->
+  <path d="M 39 28 L 48.5 28 C 52.5 28 55 30.5 55 35 C 55 39.5 52 42 47.5 42 L 39 42 Z" fill="#ffffff" />
+  <path d="M 41.5 32 L 47 32 C 48.5 32 49.8 33 49.8 35 C 49.8 37 48.5 38 47 38 L 41.5 38 Z" fill="#c2410c" />
+
+  <!-- Golden Upward Career Growth Spark / Arrow at Top Right -->
+  <polygon points="50,11 58,11 58,19 55,16 48,23 45,20 52,13" fill="url(#cbGold)" stroke="#b45309" stroke-width="0.5" />
 </svg>
