@@ -303,7 +303,7 @@ export default function App() {
                         : 'bg-white text-stone-700 border border-stone-200 hover:border-stone-300'
                     }`}
                   >
-                    All Career Guides (20)
+                    All Career Guides ({ALL_ARTICLES.length})
                   </button>
 
                   {CATEGORIES.map((cat) => (

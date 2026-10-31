@@ -13,6 +13,7 @@ import {
   Compass
 } from 'lucide-react';
 import { CategoryId, PageView } from '../types';
+import { CATEGORIES } from '../data/articles';
 
 interface Props {
   activeCategory: CategoryId | 'all';
@@ -35,12 +36,7 @@ export const Header: React.FC<Props> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const categoriesList: { id: CategoryId; label: string }[] = [
-    { id: 'job-search', label: 'Job Search & Placement' },
-    { id: 'resume-letter', label: 'Resume & Cover Letter' },
-    { id: 'interview-prep', label: 'Interview Preparation' },
-    { id: 'career-advice', label: 'Career Advice & Upskilling' },
-  ];
+  const categoriesList = CATEGORIES;
 
   const handleNavClick = (page: PageView, cat?: CategoryId | 'all') => {
     onNavigatePage(page);
@@ -120,7 +116,7 @@ export const Header: React.FC<Props> = ({
                     onNavigatePage('feed');
                   }
                 }}
-                placeholder="Search 20+ career guides, ATS resumes..."
+                placeholder="Search 22+ career guides, ATS resumes..."
                 className="w-full pl-9 pr-4 py-2 text-xs rounded-full border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 focus:border-[#ea580c] transition-all text-stone-800 placeholder-stone-400"
               />
               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
@@ -237,7 +233,7 @@ export const Header: React.FC<Props> = ({
                   onNavigatePage('feed');
                 }
               }}
-              placeholder="Search 20+ career guides..."
+              placeholder="Search 22+ career guides..."
               className="w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border border-stone-200 bg-stone-50 text-stone-800"
             />
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
@@ -270,7 +266,7 @@ export const Header: React.FC<Props> = ({
                   }`}
                 >
                   <span>{cat.label}</span>
-                  <span className="text-xs font-mono text-stone-400">5 Guides</span>
+                  <span className="text-xs font-mono text-stone-400">{cat.count} Guides</span>
                 </button>
               ))}
             </div>

@@ -66,7 +66,7 @@ export const Sidebar: React.FC<Props> = ({
         <div className="pt-2 border-t border-stone-100 flex items-center justify-center gap-4 text-[11px] font-mono text-stone-500">
           <span className="flex items-center gap-1">
             <CheckCircle2 size={12} className="text-emerald-600" />
-            20 Peer-Reviewed Guides
+            {allArticles.length} Peer-Reviewed Guides
           </span>
         </div>
       </div>
@@ -134,7 +134,7 @@ export const Sidebar: React.FC<Props> = ({
           </h4>
         </div>
         <p className="text-xs text-stone-600 leading-relaxed mb-3">
-          Explore all 20 in-depth career guides, institutional pages, and downloadable <code className="text-[11px] bg-white px-1 rounded border border-orange-200 font-mono">sitemap.xml</code> for Google Search Console indexing.
+          Explore all {allArticles.length} in-depth career guides, institutional pages, and downloadable <code className="text-[11px] bg-white px-1 rounded border border-orange-200 font-mono">sitemap.xml</code> for Google Search Console indexing.
         </p>
         <button
           onClick={() => onNavigatePage('sitemap')}

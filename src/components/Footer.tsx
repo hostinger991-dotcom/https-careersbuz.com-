@@ -116,7 +116,7 @@ export const Footer: React.FC<Props> = ({
                   }}
                   className="text-stone-400 hover:text-white transition-colors flex items-center gap-1 text-[11px] font-mono cursor-pointer"
                 >
-                  <span>View All 20 Detailed Guides →</span>
+                  <span>View All 22 Detailed Guides →</span>
                 </button>
               </li>
             </ul>
@@ -134,7 +134,7 @@ export const Footer: React.FC<Props> = ({
                   className="text-[#ea580c] hover:underline font-bold flex items-center gap-1.5 cursor-pointer"
                 >
                   <Network size={13} />
-                  <span>Interactive Sitemap (All 20 Links)</span>
+                  <span>Interactive Sitemap (All 22 Links)</span>
                 </button>
               </li>
               <li>

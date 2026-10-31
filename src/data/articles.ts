@@ -24,8 +24,8 @@ export const CATEGORIES: CategoryMeta[] = [
     id: 'job-search',
     label: 'Job Search & Placement',
     tagline: 'STRATEGIC HEADHUNTING & MARKET NAVIGATION',
-    count: 5,
-    description: 'Systematic approaches to exploring high-growth sectors, conquering job fairs, launching entry-level paths, and mastering remote work environments.'
+    count: 7,
+    description: 'Systematic approaches to exploring high-growth sectors, conquering job fairs, launching entry-level paths, mastering remote work environments, penetrating hidden job markets, and orchestrating multi-offer pipelines.'
   },
   {
     id: 'resume-letter',

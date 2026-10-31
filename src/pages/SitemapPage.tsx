@@ -152,7 +152,7 @@ ${allArticles.map(a => `  <url>
         </h1>
 
         <p className="text-sm text-stone-600 leading-relaxed max-w-3xl">
-          Complete hierarchical directory of all 20 professional career guides, executive salary negotiation playbooks, ATS resume engineering guides, and institutional compliance pages. Every single link in this directory is interactive and opens immediately.
+          Complete hierarchical directory of all {allArticles.length} professional career guides, executive salary negotiation playbooks, ATS resume engineering guides, and institutional compliance pages. Every single link in this directory is interactive and opens immediately.
         </p>
 
         {/* Live Search & Filter Bar */}
@@ -378,7 +378,7 @@ ${allArticles.map(a => `  <url>
       <div className="bg-stone-100 rounded-2xl p-4 border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-600">
         <div className="flex items-center gap-2">
           <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
-          <span>All 20 guides and institutional links are indexed with 200 OK headers for instantaneous crawler verification.</span>
+          <span>All {allArticles.length} guides and institutional links are indexed with 200 OK headers for instantaneous crawler verification.</span>
         </div>
         <button
           onClick={onBackToHome}

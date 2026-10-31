@@ -839,5 +839,90 @@ export const INFOGRAPHICS_MAP: Record<string, InfographicData> = {
         bullets: ['Leading sprint retrospectives', 'Representing team in leadership syncs', 'Spearheading team knowledge repositories']
       }
     ]
+  },
+
+  'hidden-job-market': {
+    title: 'THE HIDDEN JOB MARKET PLAYBOOK',
+    subtitle: 'UNCOVERING UNADVERTISED ROLES & EXECUTIVE RECRUITMENT',
+    keyword: 'hidden job market',
+    centerpieceType: 'radar',
+    centerpieceLabel: 'EXECUTIVE OPPORTUNITY RADAR',
+    colorScheme: {
+      primary: '#ea580c',
+      secondary: '#f59e0b',
+      accent: '#fb923c',
+      bgDark: '#0c0a09',
+      glow: '#ea580c'
+    },
+    prompt: 'A tactical executive recruitment infographic titled "THE HIDDEN JOB MARKET PLAYBOOK" with subtitle "UNCOVERING UNADVERTISED ROLES & EXECUTIVE RECRUITMENT." Radar sweep centerpiece revealing confidential executive roles, surrounded by 6 embossed golden-metallic cards.',
+    panels: [
+      {
+        title: 'RETAINED HEADHUNTERS',
+        bullets: ['Mapping Tier-1 search firms', 'Establishing executive search relationships', 'Navigating confidential mandates']
+      },
+      {
+        title: 'ORGANIZATIONAL PROFILING',
+        bullets: ['Tracking leadership departures', 'Monitoring Series-B/C expansion capital', 'Identifying structural talent vacuums']
+      },
+      {
+        title: 'WARM EXECUTIVE INTROS',
+        bullets: ['Mobilizing second-degree peer networks', 'Securing sponsor endorsements', 'Deploying high-touch value briefs']
+      },
+      {
+        title: 'POV BRIEF ENGINEERING',
+        bullets: ['Authoring 90-day diagnostic proposals', 'Benchmarking competitor blind spots', 'Offering immediate strategic clarity']
+      },
+      {
+        title: 'CONFIDENTIAL PROTOCOLS',
+        bullets: ['Safeguarding active employment', 'Handling off-record talent discussions', 'Pre-clearing conflict-of-interest agreements']
+      },
+      {
+        title: 'COMPENSATION ARBITRAGE',
+        bullets: ['Bypassing rigid HR salary bands', 'Negotiating customized equity grants', 'Securing accelerated vesting schedules']
+      }
+    ]
+  },
+
+  'job-application-pipeline': {
+    title: 'THE ALGORITHMIC JOB SEARCH PIPELINE',
+    subtitle: 'BEATING FILTER FATIGUE & MULTI-OFFER ORCHESTRATION',
+    keyword: 'job application strategy',
+    centerpieceType: 'pipeline',
+    centerpieceLabel: 'MULTI-OFFER CONVERGENCE ENGINE',
+    colorScheme: {
+      primary: '#10b981',
+      secondary: '#0ea5e9',
+      accent: '#34d399',
+      bgDark: '#041c14',
+      glow: '#059669'
+    },
+    prompt: 'A high-velocity job pipeline architecture infographic titled "THE ALGORITHMIC JOB SEARCH PIPELINE" with subtitle "BEATING FILTER FATIGUE & MULTI-OFFER ORCHESTRATION." Central multi-track pipeline converging into simultaneous offers, 6 technical callout cards in emerald and cyan tones.',
+    panels: [
+      {
+        title: 'PIPELINE ARCHITECTURE',
+        bullets: ['Staggered 3-tier company segmentation', 'Kanban velocity tracking metrics', 'Maintaining 15 active high-yield funnels']
+      },
+      {
+        title: 'ATS BYPASS CHANNELS',
+        bullets: ['Reverse-engineering hiring manager contacts', 'Engaging principal IC champions', 'Targeting technical hiring panels']
+      },
+      {
+        title: 'STAGGERED INTERVIEWING',
+        bullets: ['Synchronizing technical loops across firms', 'Aligning final round calendars', 'Preventing premature single-offer traps']
+      },
+      {
+        title: 'OFFER CONVERGENCE',
+        bullets: ['Engineering concurrent 72-hour deadlines', 'Neutralizing exploding deadlines', 'Coordinating cross-offer evaluation calls']
+      },
+      {
+        title: 'LEVERAGE EQUATIONS',
+        bullets: ['Pitting competitive term sheets', 'Expanding equity grant allocations', 'Negotiating flexible sign-on premiums']
+      },
+      {
+        title: 'EXIT & ONBOARDING',
+        bullets: ['Professional transition protocols', 'Safeguarding executive reputations', 'Securing high-impact 30-day landing plans']
+      }
+    ]
   }
 };
+

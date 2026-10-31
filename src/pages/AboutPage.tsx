@@ -75,7 +75,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-100">
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
-            <span className="block text-2xl font-black text-[#ea580c] font-mono">20</span>
+            <span className="block text-2xl font-black text-[#ea580c] font-mono">22</span>
             <span className="text-xs text-stone-600 font-medium">In-Depth Guides</span>
           </div>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
