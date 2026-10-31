@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle, ArrowLeft, ShieldAlert, CheckCircle2, Mail, Phone, Scale, Briefcase } from 'lucide-react';
+import { AlertCircle, ArrowLeft, ShieldAlert, Scale, Briefcase } from 'lucide-react';
 
 interface Props {
   onBackToHome: () => void;
@@ -12,17 +12,17 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
-        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+        <button onClick={onBackToHome} className="hover:text-amber-800 transition-colors flex items-center gap-1 font-semibold cursor-pointer">
           <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#ea580c] font-bold">Disclaimer</span>
+        <span className="text-amber-800 font-bold">Disclaimer</span>
       </nav>
 
       {/* Header */}
       <header className="space-y-3 border-b border-stone-200 pb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono font-bold">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-mono font-bold">
           <AlertCircle size={14} />
           <span>CAREER GUIDANCE &amp; COMPENSATION DISCLAIMER</span>
         </div>
@@ -34,7 +34,7 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
         <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
           <span>Effective Date: January 1, 2026</span>
           <span>·</span>
-          <span>Last Updated: March 30, 2026</span>
+          <span>Last Updated: October 30, 2026</span>
           <span>·</span>
           <span className="text-emerald-700 font-bold">Peer-Reviewed Editorial Standards</span>
         </div>
@@ -45,7 +45,7 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
         
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-stone-900 font-serif flex items-center gap-2">
-            <Briefcase size={20} className="text-[#ea580c]" />
+            <Briefcase size={20} className="text-amber-600" />
             <span>1. Professional Career &amp; Employment Advice Disclaimer</span>
           </h2>
           <p>
@@ -58,7 +58,7 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-stone-900 font-serif flex items-center gap-2">
-            <Scale size={20} className="text-[#ea580c]" />
+            <Scale size={20} className="text-amber-600" />
             <span>2. No Guarantee of Job Placement or Interview Offers</span>
           </h2>
           <p>
@@ -71,7 +71,7 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-stone-900 font-serif flex items-center gap-2">
-            <ShieldAlert size={20} className="text-[#ea580c]" />
+            <ShieldAlert size={20} className="text-amber-600" />
             <span>3. Salary Estimations &amp; Compensation Volatility</span>
           </h2>
           <p>
@@ -100,8 +100,8 @@ export const DisclaimerPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) 
           </p>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 space-y-1 font-mono text-xs">
             <p><strong>Editorial Compliance:</strong> CareersBuz Legal &amp; Research Desk</p>
-            <p><strong>Phone / WhatsApp:</strong> <a href="tel:03007802693" className="text-[#ea580c] font-bold">03007802693</a></p>
-            <p><strong>Email:</strong> <a href="mailto:hostinger991@gmail.com" className="text-[#ea580c]">hostinger991@gmail.com</a> / <a href="mailto:nadeemahmar4@gmail.com" className="text-[#ea580c]">nadeemahmar4@gmail.com</a></p>
+            <p><strong>Phone / WhatsApp:</strong> <a href="tel:03007802693" className="text-amber-800 font-bold hover:underline">03007802693</a></p>
+            <p><strong>Email:</strong> <a href="mailto:hostinger991@gmail.com" className="text-amber-800 hover:underline">hostinger991@gmail.com</a> / <a href="mailto:nadeemahmar4@gmail.com" className="text-amber-800 hover:underline">nadeemahmar4@gmail.com</a></p>
           </div>
         </section>
 

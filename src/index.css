@@ -7,7 +7,7 @@
   }
 
   body {
-    background-color: #fbfbfa;
+    background-color: #fcfcf9;
     color: #1f2937;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
@@ -15,9 +15,14 @@
   h1, h2, h3, .font-recipe-title {
     font-family: 'Lora', Georgia, serif;
   }
+
+  ::selection {
+    background-color: #fde047;
+    color: #713f12;
+  }
 }
 
-/* Print styling for Recipe Cards */
+/* Print styling for Career Guide Cards */
 @media print {
   header, footer, .no-print, nav, .ad-banner {
     display: none !important;
@@ -31,27 +36,27 @@
   }
 }
 
-/* Custom scrollbars */
+/* Custom scrollbars with Golden Yellow highlight */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1ef;
+  background: #f4f4f0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d4d4d8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
+  background: #eab308;
 }
 
-/* Food Blog Card subtle hover lift */
+/* Food & Career Blog Card subtle hover lift */
 .recipe-card-hover {
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .recipe-card-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(234, 179, 8, 0.08);
 }

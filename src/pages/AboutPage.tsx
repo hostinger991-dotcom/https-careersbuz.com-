@@ -1,15 +1,7 @@
 import React from 'react';
 import { 
   Briefcase, 
-  Award, 
-  Users, 
-  ShieldCheck, 
-  ArrowLeft, 
-  CheckCircle2, 
-  BookOpen, 
-  Mail, 
-  Phone,
-  Target
+  ArrowLeft
 } from 'lucide-react';
 
 interface Props {
@@ -50,17 +42,17 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
-        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+        <button onClick={onBackToHome} className="hover:text-amber-800 transition-colors flex items-center gap-1 font-semibold cursor-pointer">
           <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#ea580c] font-bold">About Us</span>
+        <span className="text-amber-800 font-bold">About Us</span>
       </nav>
 
       {/* Hero Mission Section */}
       <div className="bg-white border border-stone-200 rounded-3xl p-6 sm:p-10 shadow-xs space-y-5">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-[#ea580c] text-xs font-bold font-mono">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold font-mono">
           <Briefcase size={14} />
           <span>INDEPENDENT CAREER JOURNALISM</span>
         </div>
@@ -75,15 +67,15 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-stone-100">
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
-            <span className="block text-2xl font-black text-[#ea580c] font-mono">22</span>
+            <span className="block text-2xl font-black text-amber-700 font-mono">10</span>
             <span className="text-xs text-stone-600 font-medium">In-Depth Guides</span>
           </div>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
-            <span className="block text-2xl font-black text-[#ea580c] font-mono">100%</span>
+            <span className="block text-2xl font-black text-amber-700 font-mono">100%</span>
             <span className="text-xs text-stone-600 font-medium">Zero Plagiarism</span>
           </div>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
-            <span className="block text-2xl font-black text-[#ea580c] font-mono">1,400+</span>
+            <span className="block text-2xl font-black text-amber-700 font-mono">1,400+</span>
             <span className="text-xs text-stone-600 font-medium">Avg Words/Guide</span>
           </div>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center">
@@ -97,7 +89,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
       <div className="space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-            Our Four Methodological Pillars
+            Our Methodological Pillars
           </h2>
           <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">
             HOW EVERY CAREERSBUZ GUIDE IS RESEARCHED &amp; PEER-AUDITED
@@ -106,7 +98,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
 
         <div className="grid sm:grid-cols-2 gap-5">
           <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-mono font-bold">
               01
             </div>
             <h3 className="font-serif font-bold text-lg text-stone-900">
@@ -118,7 +110,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
           </div>
 
           <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-mono font-bold">
               02
             </div>
             <h3 className="font-serif font-bold text-lg text-stone-900">
@@ -130,7 +122,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
           </div>
 
           <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-mono font-bold">
               03
             </div>
             <h3 className="font-serif font-bold text-lg text-stone-900">
@@ -142,7 +134,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
           </div>
 
           <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center font-mono font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-mono font-bold">
               04
             </div>
             <h3 className="font-serif font-bold text-lg text-stone-900">
@@ -172,13 +164,13 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
               <img
                 src={leader.avatar}
                 alt={leader.name}
-                className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-orange-200"
+                className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-amber-300"
               />
               <div>
                 <h4 className="font-serif font-bold text-sm text-stone-900">
                   {leader.name}
                 </h4>
-                <p className="text-[11px] font-mono text-[#ea580c] font-semibold mt-0.5">
+                <p className="text-[11px] font-mono text-amber-700 font-semibold mt-0.5">
                   {leader.role}
                 </p>
               </div>
@@ -203,7 +195,7 @@ export const AboutPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => onNavigateTo('contact')}
-            className="px-5 py-2.5 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-bold transition-all shadow-md cursor-pointer"
           >
             Contact Editorial Desk
           </button>

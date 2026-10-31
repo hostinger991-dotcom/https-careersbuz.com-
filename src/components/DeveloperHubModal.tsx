@@ -6,15 +6,7 @@ import {
   Download, 
   Copy, 
   Check, 
-  FileText, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Terminal, 
-  ExternalLink,
-  Layers,
-  Settings,
-  HelpCircle,
-  Network
+  CheckCircle2
 } from 'lucide-react';
 
 interface Props {
@@ -32,6 +24,7 @@ export const DeveloperHubModal: React.FC<Props> = ({ isOpen = true, onClose }) =
   const adsTxtContent = `# CareersBuz Official Ads.txt Configuration
 # Generated for Google AdSense & Authorized Digital Sellers
 # Domain: careersbuz.com
+# RevBid Manager: revbid.net
 google.com, ${publisherId.trim() || 'pub-0000000000000000'}, DIRECT, f08c47fec0942fa0
 `;
 
@@ -141,7 +134,7 @@ ${ALL_ARTICLES.map(art => `  <url>
         {/* Header */}
         <div className="bg-stone-900 text-white px-6 py-5 flex items-center justify-between border-b border-stone-800 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#ea580c] flex items-center justify-center text-white shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center text-stone-900 font-bold shadow-md">
               <Code2 size={20} />
             </div>
             <div>
@@ -149,7 +142,7 @@ ${ALL_ARTICLES.map(art => `  <url>
                 <h3 className="font-serif font-bold text-lg text-white">
                   CareersBuz Developer &amp; AdSense Hub
                 </h3>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-500/20 text-[#ea580c] border border-orange-500/30">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-yellow-400/20 text-yellow-300 border border-yellow-400/30">
                   v2.6
                 </span>
               </div>
@@ -173,7 +166,7 @@ ${ALL_ARTICLES.map(art => `  <url>
             onClick={() => setActiveTab('adstxt')}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
               activeTab === 'adstxt'
-                ? 'bg-white text-[#ea580c] shadow-xs'
+                ? 'bg-white text-amber-800 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
@@ -184,7 +177,7 @@ ${ALL_ARTICLES.map(art => `  <url>
             onClick={() => setActiveTab('appadstxt')}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
               activeTab === 'appadstxt'
-                ? 'bg-white text-[#ea580c] shadow-xs'
+                ? 'bg-white text-amber-800 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
@@ -195,7 +188,7 @@ ${ALL_ARTICLES.map(art => `  <url>
             onClick={() => setActiveTab('robotstxt')}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
               activeTab === 'robotstxt'
-                ? 'bg-white text-[#ea580c] shadow-xs'
+                ? 'bg-white text-amber-800 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
@@ -206,7 +199,7 @@ ${ALL_ARTICLES.map(art => `  <url>
             onClick={() => setActiveTab('sitemap')}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
               activeTab === 'sitemap'
-                ? 'bg-white text-[#ea580c] shadow-xs'
+                ? 'bg-white text-amber-800 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
@@ -217,7 +210,7 @@ ${ALL_ARTICLES.map(art => `  <url>
             onClick={() => setActiveTab('readiness')}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
               activeTab === 'readiness'
-                ? 'bg-[#ea580c] text-white shadow-xs'
+                ? 'bg-yellow-400 text-stone-900 shadow-xs'
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
@@ -251,7 +244,7 @@ ${ALL_ARTICLES.map(art => `  <url>
 
                   <button
                     onClick={() => handleDownload('ads.txt', adsTxtContent)}
-                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-mono font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-xs"
                   >
                     <Download size={14} />
                     <span>Download ads.txt</span>
@@ -265,7 +258,7 @@ ${ALL_ARTICLES.map(art => `  <url>
                   value={publisherId}
                   onChange={(e) => setPublisherId(e.target.value)}
                   placeholder="pub-XXXXXXXXXXXXXXXX"
-                  className="px-3 py-2 text-xs font-mono rounded-xl border border-stone-300 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-[#ea580c]"
+                  className="px-3 py-2 text-xs font-mono rounded-xl border border-stone-300 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 />
               </div>
 
@@ -273,9 +266,9 @@ ${ALL_ARTICLES.map(art => `  <url>
                 {adsTxtContent}
               </pre>
 
-              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 text-xs text-orange-950 space-y-1">
+              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300 text-xs text-amber-950 space-y-1">
                 <strong className="block text-stone-900 font-serif">Where to place this file:</strong>
-                <p>Upload <code className="bg-white px-1 py-0.5 rounded font-mono border border-orange-300">ads.txt</code> to the root directory of your domain so it resolves at <code className="font-mono">https://careersbuz.com/ads.txt</code>.</p>
+                <p>Upload <code className="bg-white px-1 py-0.5 rounded font-mono border border-amber-300">ads.txt</code> to the root directory of your domain so it resolves at <code className="font-mono">https://careersbuz.com/ads.txt</code>.</p>
               </div>
             </div>
           )}
@@ -303,7 +296,7 @@ ${ALL_ARTICLES.map(art => `  <url>
 
                   <button
                     onClick={() => handleDownload('app-ads.txt', appAdsTxtContent)}
-                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-mono font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-xs"
                   >
                     <Download size={14} />
                     <span>Download</span>
@@ -340,7 +333,7 @@ ${ALL_ARTICLES.map(art => `  <url>
 
                   <button
                     onClick={() => handleDownload('robots.txt', robotsTxtContent)}
-                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-mono font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-xs"
                   >
                     <Download size={14} />
                     <span>Download</span>
@@ -360,10 +353,10 @@ ${ALL_ARTICLES.map(art => `  <url>
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="font-bold text-stone-900 font-serif">
-                    sitemap.xml (All 20 Career Guides Included)
+                    sitemap.xml (All 10 Career Guides Included)
                   </h4>
                   <p className="text-xs text-stone-500">
-                    Compliant with Google Search Console and Bing Webmaster Tools.
+                    Compliant with Google Search Console, RevBid, and Bing Webmaster Tools.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -377,7 +370,7 @@ ${ALL_ARTICLES.map(art => `  <url>
 
                   <button
                     onClick={() => handleDownload('sitemap.xml', sitemapXmlContent, 'application/xml')}
-                    className="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-mono font-bold hover:bg-[#c2410c] transition-colors flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-mono font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-xs"
                   >
                     <Download size={14} />
                     <span>Download XML</span>
@@ -395,16 +388,16 @@ ${ALL_ARTICLES.map(art => `  <url>
           {activeTab === 'readiness' && (
             <div className="space-y-4">
               <h4 className="font-bold text-stone-900 font-serif">
-                Google AdSense Publisher Approval Audit
+                Google AdSense &amp; RevBid Publisher Approval Audit
               </h4>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-2xl border border-stone-200 bg-stone-50 space-y-1">
                   <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs font-mono">
                     <CheckCircle2 size={16} />
-                    <span>20 Long-Form Guides</span>
+                    <span>10 Long-Form Guides</span>
                   </div>
                   <p className="text-xs text-stone-600">
-                    Over 28,000+ words of real, peer-audited career and resume guidance. Zero dummy or placeholder text.
+                    Over 14,500+ words of real, peer-audited career and resume guidance. Zero dummy or placeholder text.
                   </p>
                 </div>
 
@@ -434,7 +427,7 @@ ${ALL_ARTICLES.map(art => `  <url>
                     <span>Mobile &amp; PC Responsive</span>
                   </div>
                   <p className="text-xs text-stone-600">
-                    Ultra-clean GeneratePress layout that loads instantly across all screen viewports.
+                    Ultra-clean GeneratePress layout in Golden Yellow theme that loads instantly across all screen viewports.
                   </p>
                 </div>
               </div>
@@ -446,7 +439,7 @@ ${ALL_ARTICLES.map(art => `  <url>
         {/* Footer */}
         <div className="bg-stone-50 px-6 py-4 border-t border-stone-200 flex items-center justify-between shrink-0">
           <span className="text-xs font-mono text-stone-500">
-            CareersBuz Webmaster Tool · Ready for Google Search Console
+            CareersBuz Webmaster Tool · Ready for Google Search Console &amp; RevBid
           </span>
           <button
             onClick={onClose}

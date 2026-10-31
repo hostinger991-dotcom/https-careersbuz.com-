@@ -1,14 +1,10 @@
 import { Article, CategoryId } from '../types';
 import { CATEGORY_1_ARTICLES } from './articlesCategory1';
 import { CATEGORY_2_ARTICLES } from './articlesCategory2';
-import { CATEGORY_3_ARTICLES } from './articlesCategory3';
-import { CATEGORY_4_ARTICLES } from './articlesCategory4';
 
 export const ALL_ARTICLES: Article[] = [
   ...CATEGORY_1_ARTICLES,
   ...CATEGORY_2_ARTICLES,
-  ...CATEGORY_3_ARTICLES,
-  ...CATEGORY_4_ARTICLES,
 ];
 
 export interface CategoryMeta {
@@ -24,29 +20,15 @@ export const CATEGORIES: CategoryMeta[] = [
     id: 'job-search',
     label: 'Job Search & Placement',
     tagline: 'STRATEGIC HEADHUNTING & MARKET NAVIGATION',
-    count: 7,
-    description: 'Systematic approaches to exploring high-growth sectors, conquering job fairs, launching entry-level paths, mastering remote work environments, penetrating hidden job markets, and orchestrating multi-offer pipelines.'
+    count: 5,
+    description: 'Systematic approaches to exploring high-growth sectors, conquering career summits, launching entry-level paths, mastering distributed remote work environments, and penetrating the executive hidden job market.'
   },
   {
     id: 'resume-letter',
     label: 'Resume & Cover Letter',
     tagline: 'ATS REVERSE-ENGINEERING & DOCUMENT DESIGN',
     count: 5,
-    description: 'Algorithmic optimization, functional and reverse-chronological blueprints, and targeted skill articulation to beat modern ATS filters.'
-  },
-  {
-    id: 'interview-prep',
-    label: 'Interview Preparation',
-    tagline: 'HIGH-STAKES DIALOGUE & PSYCHOLOGICAL MASTERY',
-    count: 5,
-    description: 'Master behavioral frameworks, technical system design inquiries, behavioral STAR storytelling, and tactical post-interview follow-ups.'
-  },
-  {
-    id: 'career-advice',
-    label: 'Career Advice & Upskilling',
-    tagline: 'EXECUTIVE TRAJECTORY & VALUE MAXIMIZATION',
-    count: 5,
-    description: 'Advanced salary negotiation, leadership development, professional networking, burnout mitigation, and seamless career pivoting.'
+    description: 'Algorithmic optimization, functional and reverse-chronological blueprints, metric-driven skill articulation, and high-impact executive value proposition briefs.'
   }
 ];
 

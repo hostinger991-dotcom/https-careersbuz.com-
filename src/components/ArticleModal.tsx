@@ -9,13 +9,11 @@ import {
   Printer, 
   ShieldCheck, 
   BookOpen, 
-  Bookmark, 
   CheckCircle2, 
   ChevronDown, 
   ChevronUp, 
   Sparkles, 
   Award, 
-  FileText,
   Briefcase
 } from 'lucide-react';
 import { InfographicVisual } from './InfographicVisual';
@@ -74,7 +72,7 @@ export const ArticleModal: React.FC<Props> = ({
               <span className="hidden sm:inline">Back to Feed</span>
             </button>
             <span className="hidden md:inline-block text-stone-300">|</span>
-            <span className="hidden md:inline-block text-xs font-mono text-[#ea580c] font-bold uppercase tracking-wider">
+            <span className="hidden md:inline-block text-xs font-mono text-amber-800 font-bold uppercase tracking-wider">
               {article.categoryLabel}
             </span>
           </div>
@@ -113,7 +111,7 @@ export const ArticleModal: React.FC<Props> = ({
           {/* Top Byline & Category */}
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-              <span className="px-3 py-1 rounded-full bg-orange-100 text-[#ea580c] font-bold">
+              <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold border border-amber-300">
                 {article.categoryLabel}
               </span>
               <span className="text-stone-400">·</span>
@@ -144,7 +142,7 @@ export const ArticleModal: React.FC<Props> = ({
                 <img
                   src={article.author.avatar}
                   alt={article.author.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-orange-200"
+                  className="w-11 h-11 rounded-full object-cover border-2 border-amber-300"
                 />
                 <div>
                   <h4 className="text-sm font-bold text-stone-900">
@@ -184,7 +182,7 @@ export const ArticleModal: React.FC<Props> = ({
                   onClick={() => setViewMode('infographic')}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
                     viewMode === 'infographic'
-                      ? 'bg-[#ea580c] text-white shadow-xs'
+                      ? 'bg-yellow-400 text-stone-900 shadow-xs font-bold'
                       : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
@@ -219,22 +217,22 @@ export const ArticleModal: React.FC<Props> = ({
           )}
 
           {/* Executive Summary & Key Takeaways Card */}
-          <div className="bg-gradient-to-br from-orange-50/80 via-white to-amber-50/50 border border-orange-200 rounded-2xl p-6 space-y-4">
+          <div className="bg-gradient-to-br from-yellow-50/80 via-white to-amber-50/60 border border-amber-300 rounded-2xl p-6 space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#ea580c] text-white flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-yellow-400 text-stone-900 flex items-center justify-center font-bold">
                 <Briefcase size={16} />
               </div>
               <div>
                 <h3 className="font-serif font-bold text-base text-stone-900">
                   Executive Summary &amp; Key Takeaways
                 </h3>
-                <p className="text-[11px] font-mono text-[#ea580c]">
+                <p className="text-[11px] font-mono text-amber-800 font-bold">
                   HIGH-IMPACT INSIGHTS FOR CAREER ACCELERATION
                 </p>
               </div>
             </div>
 
-            <p className="text-sm text-stone-700 leading-relaxed italic border-l-2 border-[#ea580c] pl-3">
+            <p className="text-sm text-stone-700 leading-relaxed italic border-l-2 border-yellow-400 pl-3">
               "{article.summary}"
             </p>
 
@@ -245,7 +243,7 @@ export const ArticleModal: React.FC<Props> = ({
               <ul className="grid sm:grid-cols-1 gap-2">
                 {article.keyTakeaways.map((takeaway, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-xs text-stone-700 leading-snug">
-                    <CheckCircle2 size={14} className="text-[#ea580c] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={14} className="text-amber-600 shrink-0 mt-0.5" />
                     <span>{takeaway}</span>
                   </li>
                 ))}
@@ -262,7 +260,7 @@ export const ArticleModal: React.FC<Props> = ({
                     {sec.heading}
                   </h2>
                   {sec.subheading && (
-                    <p className="text-xs font-mono text-[#ea580c] uppercase tracking-wider font-semibold mt-1">
+                    <p className="text-xs font-mono text-amber-700 uppercase tracking-wider font-semibold mt-1">
                       {sec.subheading}
                     </p>
                   )}
@@ -283,7 +281,7 @@ export const ArticleModal: React.FC<Props> = ({
                     <ul className="space-y-1.5">
                       {sec.takeaways.map((t, tIdx) => (
                         <li key={tIdx} className="text-xs text-stone-700 flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c] mt-1.5 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-1.5 shrink-0" />
                           <span>{t}</span>
                         </li>
                       ))}
@@ -293,9 +291,9 @@ export const ArticleModal: React.FC<Props> = ({
 
                 {/* Case Study Callout Box */}
                 {sec.caseStudy && (
-                  <div className="bg-white border-2 border-amber-200 rounded-2xl p-5 shadow-xs space-y-3 my-4">
+                  <div className="bg-white border-2 border-amber-300 rounded-2xl p-5 shadow-xs space-y-3 my-4">
                     <div className="flex items-center gap-2 text-amber-800">
-                      <Award size={18} className="text-[#ea580c]" />
+                      <Award size={18} className="text-amber-600" />
                       <h4 className="font-serif font-bold text-sm text-stone-900">
                         {sec.caseStudy.title}
                       </h4>
@@ -312,15 +310,15 @@ export const ArticleModal: React.FC<Props> = ({
 
                 {/* Action Checklist */}
                 {sec.actionChecklist && sec.actionChecklist.length > 0 && (
-                  <div className="bg-orange-50/50 border border-orange-200 rounded-xl p-4 space-y-2">
-                    <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-orange-900 flex items-center gap-1.5">
-                      <CheckCircle2 size={13} className="text-[#ea580c]" />
+                  <div className="bg-amber-50/60 border border-amber-300 rounded-xl p-4 space-y-2">
+                    <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                      <CheckCircle2 size={13} className="text-amber-700" />
                       <span>Actionable Implementation Checklist:</span>
                     </h5>
                     <ul className="space-y-1.5 text-xs text-stone-800">
                       {sec.actionChecklist.map((item, cIdx) => (
                         <li key={cIdx} className="flex items-center gap-2">
-                          <input type="checkbox" className="rounded text-[#ea580c] focus:ring-[#ea580c]" />
+                          <input type="checkbox" className="rounded text-amber-500 focus:ring-yellow-400" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -379,7 +377,7 @@ export const ArticleModal: React.FC<Props> = ({
                   <div
                     key={rel.id}
                     onClick={() => onSelectRelated(rel)}
-                    className="p-3 border border-stone-200 rounded-xl hover:border-orange-300 hover:shadow-xs transition-all cursor-pointer group bg-stone-50/50"
+                    className="p-3 border border-stone-200 rounded-xl hover:border-amber-300 hover:shadow-xs transition-all cursor-pointer group bg-stone-50/50"
                   >
                     <div className="aspect-[16/10] rounded-lg overflow-hidden mb-2 bg-stone-100">
                       <img
@@ -388,10 +386,10 @@ export const ArticleModal: React.FC<Props> = ({
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       />
                     </div>
-                    <span className="text-[10px] font-mono text-[#ea580c] font-bold uppercase">
+                    <span className="text-[10px] font-mono text-amber-700 font-bold uppercase">
                       {rel.readTimeMinutes} min read
                     </span>
-                    <h5 className="text-xs font-bold text-stone-800 line-clamp-2 group-hover:text-[#ea580c] mt-0.5 font-serif">
+                    <h5 className="text-xs font-bold text-stone-800 line-clamp-2 group-hover:text-amber-800 mt-0.5 font-serif">
                       {rel.title}
                     </h5>
                   </div>

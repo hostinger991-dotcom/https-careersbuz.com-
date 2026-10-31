@@ -1,6 +1,6 @@
 import React from 'react';
 import { Article } from '../types';
-import { Clock, ShieldCheck, ArrowRight, BookOpen, CheckCircle } from 'lucide-react';
+import { Clock, ShieldCheck, ArrowRight, BookOpen } from 'lucide-react';
 
 interface Props {
   article: Article;
@@ -11,7 +11,7 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
   return (
     <article 
       onClick={() => onSelect(article)}
-      className="recipe-card-hover group bg-white border border-stone-200 rounded-2xl overflow-hidden cursor-pointer shadow-xs flex flex-col justify-between transition-all"
+      className="recipe-card-hover group bg-white border border-stone-200 hover:border-yellow-400 rounded-2xl overflow-hidden cursor-pointer shadow-xs flex flex-col justify-between transition-all"
     >
       <div>
         {/* Real Authentic Workplace & Career Photography Thumbnail */}
@@ -26,7 +26,7 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
 
           {/* Top Badges */}
           <div className="absolute top-3 left-3 z-10 flex flex-wrap gap-1.5">
-            <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-[#ea580c] shadow-xs">
+            <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-amber-900 shadow-xs border border-amber-200">
               {article.categoryLabel}
             </span>
           </div>
@@ -44,7 +44,7 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
               <Clock size={11} />
               <span>{article.readTimeMinutes} min read</span>
             </span>
-            <span className="flex items-center gap-1 bg-black/55 backdrop-blur-sm px-2 py-0.5 rounded-md text-orange-200 font-semibold">
+            <span className="flex items-center gap-1 bg-black/55 backdrop-blur-sm px-2 py-0.5 rounded-md text-yellow-300 font-semibold">
               <BookOpen size={11} />
               <span>{article.wordCount} words</span>
             </span>
@@ -56,7 +56,7 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
           
           {/* Metadata Keyword & Updated date */}
           <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-500 font-mono">
-            <span className="text-[#ea580c] font-bold uppercase tracking-wider">
+            <span className="text-amber-700 font-bold uppercase tracking-wider">
               #{article.keyword}
             </span>
             <span>·</span>
@@ -64,7 +64,7 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
           </div>
 
           {/* Guide Headline */}
-          <h3 className="text-lg font-bold tracking-tight text-stone-900 group-hover:text-[#ea580c] transition-colors leading-snug font-serif">
+          <h3 className="text-lg font-bold tracking-tight text-stone-900 group-hover:text-amber-700 transition-colors leading-snug font-serif">
             {article.title}
           </h3>
 
@@ -81,14 +81,14 @@ export const ArticleCard: React.FC<Props> = ({ article, onSelect }) => {
           <img
             src={article.author.avatar}
             alt={article.author.name}
-            className="w-6 h-6 rounded-full object-cover border border-stone-200"
+            className="w-6 h-6 rounded-full object-cover border border-amber-200"
           />
           <span className="text-xs font-semibold text-stone-700 truncate max-w-[130px]">
             {article.author.name}
           </span>
         </div>
 
-        <span className="text-xs font-bold text-[#ea580c] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+        <span className="text-xs font-bold text-amber-800 flex items-center gap-1 group-hover:translate-x-0.5 group-hover:text-amber-900 transition-all">
           <span>Read Guide</span>
           <ArrowRight size={13} />
         </span>

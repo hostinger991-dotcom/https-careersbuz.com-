@@ -35,17 +35,17 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
-        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+        <button onClick={onBackToHome} className="hover:text-amber-800 transition-colors flex items-center gap-1 font-semibold cursor-pointer">
           <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#ea580c] font-bold">Contact Us</span>
+        <span className="text-amber-800 font-bold">Contact Us</span>
       </nav>
 
       {/* Header */}
       <header className="space-y-3 border-b border-stone-200 pb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ea580c] text-xs font-mono font-bold">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-mono font-bold">
           <Briefcase size={14} />
           <span>CAREERSBUZ EDITORIAL &amp; PRESS DESK</span>
         </div>
@@ -64,7 +64,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
         
         {/* Phone & WhatsApp Card */}
         <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-bold">
             <Phone size={20} />
           </div>
           <div>
@@ -77,7 +77,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
           </div>
           <a
             href="tel:03007802693"
-            className="block text-base font-bold font-mono text-[#ea580c] hover:underline"
+            className="block text-base font-bold font-mono text-amber-800 hover:underline"
           >
             03007802693
           </a>
@@ -88,7 +88,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
 
         {/* Primary Editorial Email */}
         <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-bold">
             <Mail size={20} />
           </div>
           <div>
@@ -101,18 +101,18 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
           </div>
           <a
             href="mailto:hostinger991@gmail.com"
-            className="block text-sm font-bold font-mono text-[#ea580c] hover:underline truncate"
+            className="block text-sm font-bold font-mono text-amber-800 hover:underline truncate"
           >
             hostinger991@gmail.com
           </a>
-          <span className="inline-block text-[10px] font-mono bg-orange-50 text-orange-700 px-2.5 py-0.5 rounded-full border border-orange-200">
+          <span className="inline-block text-[10px] font-mono bg-amber-50 text-amber-800 px-2.5 py-0.5 rounded-full border border-amber-200">
             SLA: Under 12 Hours
           </span>
         </div>
 
         {/* Secondary Press & Executive Desk */}
         <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-xs space-y-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-[#ea580c] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-bold">
             <Mail size={20} />
           </div>
           <div>
@@ -125,7 +125,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
           </div>
           <a
             href="mailto:nadeemahmar4@gmail.com"
-            className="block text-sm font-bold font-mono text-[#ea580c] hover:underline truncate"
+            className="block text-sm font-bold font-mono text-amber-800 hover:underline truncate"
           >
             nadeemahmar4@gmail.com
           </a>
@@ -157,7 +157,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                   setSubmitted(false);
                   setMessage('');
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#ea580c] text-white text-xs font-bold hover:bg-[#c2410c] transition-all cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-bold transition-all cursor-pointer shadow-xs"
               >
                 Send Another Inquiry
               </button>
@@ -179,7 +179,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Alexandra Smith"
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 text-stone-900"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400/40 text-stone-900"
                   />
                 </div>
 
@@ -193,7 +193,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="alex@enterprise.com"
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 text-stone-900"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400/40 text-stone-900"
                   />
                 </div>
               </div>
@@ -208,7 +208,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                     value={phoneInput}
                     onChange={(e) => setPhoneInput(e.target.value)}
                     placeholder="+92 300 7802693"
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 text-stone-900"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400/40 text-stone-900"
                   />
                 </div>
 
@@ -219,7 +219,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                   <select
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 text-stone-900"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400/40 text-stone-900"
                   >
                     <option value="Career Trajectory & Placement Strategy">Career Trajectory &amp; Placement Strategy</option>
                     <option value="ATS Resume Audit & Optimization">ATS Resume Audit &amp; Optimization</option>
@@ -227,7 +227,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                     <option value="Salary Negotiation Benchmarks">Salary Negotiation Benchmarks</option>
                     <option value="Editorial Correction or Research Feedback">Editorial Correction or Research Feedback</option>
                     <option value="Press, Syndication & Media Inquiries">Press, Syndication &amp; Media Inquiries</option>
-                    <option value="AdSense Compliance & Verification">AdSense Compliance &amp; Verification</option>
+                    <option value="AdSense & RevBid Compliance Verification">AdSense &amp; RevBid Compliance Verification</option>
                   </select>
                 </div>
               </div>
@@ -242,13 +242,13 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Detail your question, career context, or editorial proposal..."
-                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]/30 text-stone-900 leading-relaxed"
+                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400/40 text-stone-900 leading-relaxed"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-stone-900 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Send size={14} />
                 <span>Dispatch Inquiry to Editorial Team</span>
@@ -267,7 +267,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
 
             <div className="space-y-3 text-xs text-stone-600">
               <div className="flex items-start gap-2.5">
-                <Clock size={16} className="text-[#ea580c] shrink-0 mt-0.5" />
+                <Clock size={16} className="text-amber-700 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-stone-800">24-Hour Editorial SLA:</strong>
                   <p className="mt-0.5">Every email received by our principal authors is acknowledged and answered within 24 business hours.</p>
@@ -301,7 +301,7 @@ export const ContactPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => 
             </p>
             <button
               onClick={() => onNavigateTo('sitemap')}
-              className="text-xs font-bold text-[#ea580c] hover:underline"
+              className="text-xs font-bold text-amber-800 hover:underline cursor-pointer"
             >
               Open Full Sitemap Directory →
             </button>

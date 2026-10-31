@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, ArrowLeft, Shield, AlertTriangle, Mail, Phone, CheckCircle2 } from 'lucide-react';
+import { FileText, ArrowLeft } from 'lucide-react';
 
 interface Props {
   onBackToHome: () => void;
@@ -12,17 +12,17 @@ export const TermsPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-mono text-stone-500">
-        <button onClick={onBackToHome} className="hover:text-[#ea580c] transition-colors flex items-center gap-1 font-semibold cursor-pointer">
+        <button onClick={onBackToHome} className="hover:text-amber-800 transition-colors flex items-center gap-1 font-semibold cursor-pointer">
           <ArrowLeft size={13} />
           <span>Home</span>
         </button>
         <span>/</span>
-        <span className="text-[#ea580c] font-bold">Terms &amp; Conditions</span>
+        <span className="text-amber-800 font-bold">Terms &amp; Conditions</span>
       </nav>
 
       {/* Header */}
       <header className="space-y-3 border-b border-stone-200 pb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ea580c] text-xs font-mono font-bold">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-mono font-bold">
           <FileText size={14} />
           <span>TERMS OF SERVICE &amp; EDITORIAL FAIR USE</span>
         </div>
@@ -34,7 +34,7 @@ export const TermsPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
         <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500">
           <span>Effective Date: January 1, 2026</span>
           <span>·</span>
-          <span>Last Updated: March 30, 2026</span>
+          <span>Last Updated: October 30, 2026</span>
           <span>·</span>
           <span className="text-emerald-700 font-bold">Governed by International Digital Publishing Standards</span>
         </div>
@@ -46,42 +46,42 @@ export const TermsPage: React.FC<Props> = ({ onBackToHome, onNavigateTo }) => {
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-stone-900 font-serif">1. Agreement to Terms</h2>
           <p>
-            By accessing and utilizing CareersBuz (https://careersbuz.com), you agree to be bound by these Terms and Conditions and agree that you are responsible for compliance with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site.
+            By accessing and utilizing CareersBuz (https://careersbuz.com), you agree to be bound by these Terms and Conditions and agree that you are responsible for compliance with any applicable local laws.
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-stone-900 font-serif">2. Intellectual Property &amp; Career Content Reproduction</h2>
           <p>
-            All original guide text, case studies, resume templates, salary negotiation frameworks, editorial infographics, and compilation layouts published on CareersBuz are the intellectual property of CareersBuz, protected by international copyright and trademark law.
+            All original guide text, case studies, resume frameworks, salary benchmarks, and layout materials published on CareersBuz are the intellectual property of CareersBuz, protected under international copyright law.
           </p>
-          <div className="p-4 rounded-2xl bg-orange-50/60 border border-orange-200 space-y-2 text-xs text-orange-950">
-            <strong>Fair Use &amp; Academic Attribution Policy:</strong>
-            <p className="text-orange-900 leading-relaxed">
-              You may quote up to 100 words of any article provided that explicit, prominent attribution is given with a direct, do-follow hyperlink to the canonical guide on CareersBuz. Scraping or re-publishing full articles without written permission is strictly prohibited.
+          <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-300 space-y-2 text-xs text-amber-950">
+            <strong>Fair Use &amp; Attribution Policy:</strong>
+            <p className="text-amber-900 leading-relaxed">
+              Educational institutions and non-profit organizations may quote up to 250 words of any individual article provided explicit canonical link attribution is provided to <code className="bg-white px-1 py-0.5 rounded border border-amber-200 font-mono">https://careersbuz.com</code>. Scraping or bulk automated reproduction is strictly prohibited.
             </p>
           </div>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-bold text-stone-900 font-serif">3. User Conduct &amp; Prohibited Actions</h2>
-          <p>When interacting with CareersBuz, users agree not to:</p>
+          <h2 className="text-xl font-bold text-stone-900 font-serif">3. User Conduct &amp; Permitted Use</h2>
+          <p>
+            Visitors may browse, read, bookmark, and download published career guides for individual professional advancement. You agree not to:
+          </p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Attempt to reverse-engineer, decompile, or extract source data or scripts.</li>
-            <li>Use automated scrapers, bots, or spiders to harvest article contents without explicit API permissions.</li>
-            <li>Misrepresent employment credentials, impersonate editorial authors, or submit defamatory inquiries.</li>
+            <li>Scrape, crawl, or harvest content using automated scripts for unauthorized syndication.</li>
+            <li>Resell or redistribute any CareersBuz resume templates as proprietary products.</li>
+            <li>Attempt to circumvent any security headers or server-side restrictions.</li>
           </ul>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-bold text-stone-900 font-serif">4. Contact &amp; Governance</h2>
-          <p>
-            Questions regarding terms, syndication rights, or corporate licensing can be directed to:
-          </p>
+          <h2 className="text-xl font-bold text-stone-900 font-serif">4. Publisher Contact &amp; Legal Notices</h2>
           <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 font-mono text-xs space-y-1">
-            <p><strong>Desk:</strong> CareersBuz Legal &amp; Governance Team</p>
-            <p><strong>Email:</strong> hostinger991@gmail.com / nadeemahmar4@gmail.com</p>
-            <p><strong>Phone / WhatsApp:</strong> 03007802693</p>
+            <p><strong>Entity:</strong> CareersBuz Legal &amp; Publishing Desk</p>
+            <p><strong>Official Email:</strong> hostinger991@gmail.com</p>
+            <p><strong>Secondary Desk:</strong> nadeemahmar4@gmail.com</p>
+            <p><strong>Direct Telephone:</strong> 03007802693</p>
           </div>
         </section>
 

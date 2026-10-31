@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { ALL_ARTICLES, CATEGORIES, getArticlesByCategory, searchArticles } from './data/articles';
+import { ALL_ARTICLES, CATEGORIES, searchArticles } from './data/articles';
 import { Article, CategoryId, PageView } from './types';
 import { Header } from './components/Header';
 import { ArticleCard } from './components/ArticleCard';
@@ -14,14 +14,11 @@ import { TermsPage } from './pages/TermsPage';
 import { DisclaimerPage } from './pages/DisclaimerPage';
 import { SitemapPage } from './pages/SitemapPage';
 import { 
-  Briefcase, 
   Clock, 
   ArrowRight, 
   ShieldCheck, 
   Search, 
-  BookOpen, 
-  Award,
-  Sparkles
+  BookOpen
 } from 'lucide-react';
 
 export default function App() {
@@ -31,7 +28,7 @@ export default function App() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [developerHubOpen, setDeveloperHubOpen] = useState(false);
 
-  // Hash routing synchronization for deep links (#home, #about-us, #contact-us, #sitemap, #privacy-policy, #terms-and-conditions, #disclaimer, and #recipe-[slug])
+  // Hash routing synchronization for deep links
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.toLowerCase();
@@ -99,12 +96,12 @@ export default function App() {
 
   // Lead Featured Guide (Article #1) and Secondary Featured (Articles #2 and #6)
   const heroArticle = ALL_ARTICLES[0];
-  const secondaryFeatured = [ALL_ARTICLES[5], ALL_ARTICLES[10]];
+  const secondaryFeatured = [ALL_ARTICLES[1], ALL_ARTICLES[5]];
 
   return (
-    <div className="min-h-screen bg-[#fbfbfa] text-[#1f2937] flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#fed7aa] selection:text-[#9a3412]">
+    <div className="min-h-screen bg-[#fcfcf9] text-[#1f2937] flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-yellow-200 selection:text-yellow-950">
       
-      {/* 1. Header & Navigation (RecipePots Clean Editorial Style) */}
+      {/* 1. Header & Navigation (Golden Yellow Theme) */}
       <Header
         activeCategory={selectedCategory}
         currentPage={currentPage}
@@ -171,7 +168,7 @@ export default function App() {
           />
         )}
 
-        {/* HOME FEED VIEW (CareersBuz 20 Guides + Hero Spotlight + RecipePots / GeneratePress 2-Column Sidebar Layout) */}
+        {/* HOME FEED VIEW (CareersBuz 10 Guides across 2 Categories + Hero Spotlight + 2-Column Sidebar Layout) */}
         {currentPage === 'feed' && (
           <>
             {/* HERO FEATURED GUIDE SECTION (When not filtering with search) */}
@@ -184,11 +181,11 @@ export default function App() {
                   {/* Left: Lead Featured Hero Guide */}
                   <div 
                     onClick={() => setSelectedArticle(heroArticle)}
-                    className="lg:col-span-8 group bg-white border border-stone-200 hover:border-[#ea580c] rounded-3xl p-6 sm:p-8 cursor-pointer shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                    className="lg:col-span-8 group bg-white border border-stone-200 hover:border-yellow-400 rounded-3xl p-6 sm:p-8 cursor-pointer shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
                   >
                     <div className="space-y-4">
                       <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-500">
-                        <span className="px-3 py-1 rounded-full bg-orange-100 text-[#ea580c] font-bold uppercase tracking-wider">
+                        <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold uppercase tracking-wider border border-amber-300">
                           Today's Featured Career Playbook
                         </span>
                         <span>·</span>
@@ -200,7 +197,7 @@ export default function App() {
                         </span>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 group-hover:text-[#ea580c] transition-colors tracking-tight leading-tight font-serif">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 group-hover:text-amber-700 transition-colors tracking-tight leading-tight font-serif">
                         {heroArticle.title}
                       </h2>
 
@@ -210,16 +207,16 @@ export default function App() {
 
                       <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-500 pt-2">
                         <span className="flex items-center gap-1 font-bold text-stone-800">
-                          <Clock size={13} className="text-[#ea580c]" />
+                          <Clock size={13} className="text-amber-600" />
                           <span>{heroArticle.readTimeMinutes} Min Read</span>
                         </span>
                         <span>·</span>
                         <span className="flex items-center gap-1 font-bold text-stone-800">
-                          <BookOpen size={13} className="text-[#ea580c]" />
+                          <BookOpen size={13} className="text-amber-600" />
                           <span>{heroArticle.wordCount} Words</span>
                         </span>
                         <span>·</span>
-                        <span className="text-[#ea580c] font-bold uppercase">#{heroArticle.keyword}</span>
+                        <span className="text-amber-700 font-bold uppercase">#{heroArticle.keyword}</span>
                       </div>
                     </div>
 
@@ -228,7 +225,7 @@ export default function App() {
                         <img
                           src={heroArticle.author.avatar}
                           alt={heroArticle.author.name}
-                          className="w-9 h-9 rounded-full object-cover border border-orange-200"
+                          className="w-9 h-9 rounded-full object-cover border border-amber-300"
                         />
                         <div>
                           <div className="text-xs font-bold text-stone-900">
@@ -240,7 +237,7 @@ export default function App() {
                         </div>
                       </div>
 
-                      <span className="px-4 py-2 rounded-xl bg-[#ea580c] text-white text-xs font-bold group-hover:bg-[#c2410c] transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer">
+                      <span className="px-4 py-2 rounded-xl bg-yellow-400 text-stone-900 text-xs font-bold hover:bg-yellow-500 transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer">
                         <span>Read Full Guide</span>
                         <ArrowRight size={14} />
                       </span>
@@ -253,18 +250,18 @@ export default function App() {
                       <div
                         key={art.id}
                         onClick={() => setSelectedArticle(art)}
-                        className="flex-1 bg-white border border-stone-200 hover:border-[#ea580c] rounded-3xl p-5 cursor-pointer shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                        className="flex-1 bg-white border border-stone-200 hover:border-yellow-400 rounded-3xl p-5 cursor-pointer shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
                       >
                         <div className="space-y-2">
                           <div className="flex items-center justify-between text-[11px] font-mono text-stone-500">
-                            <span className="text-[#ea580c] font-bold uppercase">{art.categoryLabel}</span>
+                            <span className="text-amber-700 font-bold uppercase">{art.categoryLabel}</span>
                             <span className="flex items-center gap-1 text-stone-600 font-semibold">
                               <Clock size={11} />
                               <span>{art.readTimeMinutes}m read</span>
                             </span>
                           </div>
 
-                          <h3 className="text-base font-bold text-stone-900 group-hover:text-[#ea580c] transition-colors font-serif line-clamp-2 leading-snug">
+                          <h3 className="text-base font-bold text-stone-900 group-hover:text-amber-700 transition-colors font-serif line-clamp-2 leading-snug">
                             {art.title}
                           </h3>
 
@@ -275,7 +272,7 @@ export default function App() {
 
                         <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-600 mt-2">
                           <span className="font-mono text-[11px]">{art.wordCount} words · Verified</span>
-                          <span className="font-bold text-[#ea580c] group-hover:translate-x-1 transition-transform">Read Guide →</span>
+                          <span className="font-bold text-amber-800 group-hover:translate-x-1 transition-transform">Read Guide →</span>
                         </div>
                       </div>
                     ))}
@@ -315,7 +312,7 @@ export default function App() {
                       }}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                         selectedCategory === cat.id
-                          ? 'bg-[#ea580c] text-white shadow-xs'
+                          ? 'bg-yellow-400 text-stone-900 shadow-xs'
                           : 'bg-white text-stone-700 border border-stone-200 hover:border-stone-300'
                       }`}
                     >
@@ -330,7 +327,7 @@ export default function App() {
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery('')}
-                      className="text-[#ea580c] hover:underline font-bold cursor-pointer"
+                      className="text-amber-700 hover:underline font-bold cursor-pointer"
                     >
                       (Clear Search)
                     </button>
@@ -340,7 +337,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* MAIN 2-COLUMN LAYOUT (RecipePots / GeneratePress Layout) */}
+            {/* MAIN 2-COLUMN LAYOUT */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
               {/* Left / Main Column: Career Guides Grid (8 cols) */}
@@ -360,21 +357,21 @@ export default function App() {
                 {/* No Results Fallback */}
                 {filteredArticles.length === 0 && (
                   <div className="bg-white border border-stone-200 rounded-3xl p-12 text-center space-y-4 shadow-xs">
-                    <div className="w-14 h-14 rounded-full bg-orange-100 text-[#ea580c] flex items-center justify-center mx-auto">
+                    <div className="w-14 h-14 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto">
                       <Search size={28} />
                     </div>
                     <h3 className="text-xl font-bold font-serif text-stone-900">
                       No career guides matched your search
                     </h3>
                     <p className="text-xs text-stone-500 max-w-sm mx-auto">
-                      Try searching for keywords like "ATS", "interview", "salary", "remote", or "executive".
+                      Try searching for keywords like "ATS", "interview", "resume", "remote", or "executive".
                     </p>
                     <button
                       onClick={() => {
                         setSearchQuery('');
                         setSelectedCategory('all');
                       }}
-                      className="px-5 py-2 rounded-xl bg-stone-900 text-white text-xs font-bold hover:bg-stone-800 transition-colors cursor-pointer"
+                      className="px-5 py-2 rounded-xl bg-yellow-400 text-stone-900 text-xs font-bold hover:bg-yellow-500 transition-colors cursor-pointer"
                     >
                       Reset Search &amp; Category Filters
                     </button>
@@ -412,7 +409,6 @@ export default function App() {
           article={selectedArticle}
           onClose={() => {
             setSelectedArticle(null);
-            // reset hash if it was a direct recipe deep link
             if (window.location.hash.startsWith('#recipe-')) {
               window.history.pushState(null, '', window.location.pathname + '#home');
             }
